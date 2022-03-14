@@ -100,14 +100,14 @@
                                 <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Ingredient cell" textLabel="DVg-g6-NmS" style="IBUITableViewCellStyleDefault" id="SRI-5U-3h5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Ingredient cell" textLabel="Bwm-Oo-YR8" style="IBUITableViewCellStyleDefault" id="SRI-5U-3h5">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SRI-5U-3h5" id="N9b-Ww-Jpt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVg-g6-NmS">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bwm-Oo-YR8">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
@@ -134,6 +134,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="k39-Yg-Rek" kind="show" id="bRZ-aB-I6G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -166,6 +169,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1023.1884057971015" y="79.6875"/>
+        </scene>
+        <!--Ingredients List Table View Controller-->
+        <scene sceneID="PYt-93-tal">
+            <objects>
+                <tableViewController id="k39-Yg-Rek" customClass="IngredientsListTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vfP-du-fLO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientDetailCell" rowHeight="200" id="LxI-hW-1qJ" customClass="IngredientDetailCell" customModule="Reciplease" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LxI-hW-1qJ" id="XX3-i5-6Hi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-xn-JVu">
+                                            <rect key="frame" x="30" y="136.5" width="354" height="53.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margarita Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIc-Xa-Nbr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fromage, tomatoes, olives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKv-uu-zev">
+                                                    <rect key="frame" x="0.0" y="32" width="354" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="DmF-xn-JVu" secondAttribute="trailing" constant="10" id="6Wj-xP-0jH"/>
+                                        <constraint firstItem="DmF-xn-JVu" firstAttribute="leading" secondItem="XX3-i5-6Hi" secondAttribute="leadingMargin" constant="10" id="ZK5-9D-tTP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.16078431372549018" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qKv-uu-zev" secondAttribute="bottom" constant="10" id="5eG-A4-qQQ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="labelIngredientDetail" destination="qKv-uu-zev" id="lUI-Tl-vsu"/>
+                                    <outlet property="labelIngredientName" destination="XIc-Xa-Nbr" id="3Fe-sA-ZIf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="k39-Yg-Rek" id="nfY-ol-AgH"/>
+                            <outlet property="delegate" destination="k39-Yg-Rek" id="CiF-Fi-cUs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nNT-js-P5B"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Q5-ap-HR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918.840579710145" y="87.723214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DTs-qe-QEc">

@@ -47,6 +47,7 @@ class ViewController: UIViewController {
   func didTapClearButton(sender: UIButton){
     self.ingredients.removeAll()
     self.tableViewIngredients.reloadData()
+    self.textFieldUserIngredients.text = ""
   }
 }
 
@@ -63,13 +64,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Ingredient cell")!
+    var content = cell.defaultContentConfiguration()
+    
     let ingredient = ingredients[indexPath.row]
     let markerFelt = UIFont(name: "Marker felt", size: 20)
-    let attributedText = NSAttributedString(string: ingredient,
+    let attributedText = NSAttributedString(string: "- \(ingredient.capitalized)",
                                         attributes: [.foregroundColor: UIColor.white, .font: markerFelt!])
-    cell.textLabel?.attributedText = attributedText
+    content.attributedText = attributedText
+    cell.contentConfiguration = content
     cell.contentView.backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)
-    cell.textLabel?.text = "- " + ingredient
     
     return cell
   }

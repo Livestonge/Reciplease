@@ -12,11 +12,15 @@
 		091C3EB527D7AD0700319728 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3EB427D7AD0700319728 /* ViewController.swift */; };
 		091C3EB827D7AD0700319728 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EB627D7AD0700319728 /* Main.storyboard */; };
 		091C3EBB27D7AD0700319728 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 091C3EB927D7AD0700319728 /* Reciplease.xcdatamodeld */; };
-		091C3EBD27D7AD0800319728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		091C3EC027D7AD0800319728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBE27D7AD0800319728 /* LaunchScreen.storyboard */; };
 		091C3ECB27D7AD0800319728 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ECA27D7AD0800319728 /* RecipleaseTests.swift */; };
 		091C3ED527D7AD0800319728 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ED427D7AD0800319728 /* RecipleaseUITests.swift */; };
 		091C3ED727D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ED627D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift */; };
+		0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */; };
+		0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */; };
+		0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */; };
+		0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */; };
+		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D767F527DB4C5D009BA77C /* UIView extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +56,10 @@
 		091C3ED027D7AD0800319728 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		091C3ED427D7AD0800319728 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		091C3ED627D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailCell.swift; sourceTree = "<group>"; };
+		0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
+		0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMetricsView.swift; sourceTree = "<group>"; };
+		0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientMetricsView.xib; sourceTree = "<group>"; };
 		09D767F527DB4C5D009BA77C /* UIView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +114,11 @@
 				091C3EB027D7AD0700319728 /* AppDelegate.swift */,
 				091C3EB227D7AD0700319728 /* SceneDelegate.swift */,
 				091C3EB427D7AD0700319728 /* ViewController.swift */,
+				0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */,
 				091C3EB627D7AD0700319728 /* Main.storyboard */,
+				0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */,
+				0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */,
+				0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */,
 				09D767F527DB4C5D009BA77C /* UIView extension.swift */,
 				091C3EBC27D7AD0800319728 /* Assets.xcassets */,
 				091C3EBE27D7AD0800319728 /* LaunchScreen.storyboard */,
@@ -238,7 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				091C3EC027D7AD0800319728 /* LaunchScreen.storyboard in Resources */,
-				091C3EBD27D7AD0800319728 /* Assets.xcassets in Resources */,
+				0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */,
+				099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */,
 				091C3EB827D7AD0700319728 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,10 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				091C3EBB27D7AD0700319728 /* Reciplease.xcdatamodeld in Sources */,
+				0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */,
 				091C3EB527D7AD0700319728 /* ViewController.swift in Sources */,
 				091C3EB127D7AD0700319728 /* AppDelegate.swift in Sources */,
 				09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */,
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,
+				0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */,
+				0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
