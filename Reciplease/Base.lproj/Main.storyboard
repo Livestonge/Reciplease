@@ -135,7 +135,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="k39-Yg-Rek" kind="show" id="bRZ-aB-I6G"/>
+                                    <action selector="didTapSearchButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cCl-Lw-wOm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -173,7 +173,7 @@
         <!--Ingredients List Table View Controller-->
         <scene sceneID="PYt-93-tal">
             <objects>
-                <tableViewController id="k39-Yg-Rek" customClass="IngredientsListTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="IngredientsListTableViewController" id="k39-Yg-Rek" customClass="IngredientsListTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vfP-du-fLO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

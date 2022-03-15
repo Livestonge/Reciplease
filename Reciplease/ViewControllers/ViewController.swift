@@ -14,9 +14,11 @@ class ViewController: UIViewController {
   
   
   var ingredients: [String] = []
+  var recipesProvider: RecipesProviderDelegate!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    recipesProvider = RecipesProviding()
     textFieldUserIngredients.keyboardType = .asciiCapable
     textFieldUserIngredients.becomeFirstResponder()
     
@@ -48,6 +50,19 @@ class ViewController: UIViewController {
     self.ingredients.removeAll()
     self.tableViewIngredients.reloadData()
     self.textFieldUserIngredients.text = ""
+  }
+  
+  @IBAction
+  func didTapSearchButton(sender: UIButton){
+    guard let vc = storyboard?.instantiateViewController(withIdentifier: "IngredientsListTableViewController") as? IngredientsListTableViewController
+    else {fatalError("Failed to load IngredientsListVC")}
+    recipesProvider.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
+    DispatchQueue.main.async {
+        vc.recipes = recipes
+        self?.navigationController?.pushViewController(vc, animated: true)
+      }
+    }
+    
   }
 }
 

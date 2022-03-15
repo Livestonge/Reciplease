@@ -8,6 +8,8 @@
 import UIKit
 
 class IngredientsListTableViewController: UITableViewController {
+  
+  var recipes: [Recipe]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,14 +18,9 @@ class IngredientsListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+      return recipes.count
     }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -38,8 +35,8 @@ class IngredientsListTableViewController: UITableViewController {
 //      content.text = "Pizza"
 //      content.secondaryText = "good pizza"
 //      cell.contentConfiguration = content
-      cell.configureCellWith(name: "Salmon Pizza",
-                             detail: "Fromage, tomatoes, salmon, olives")
+      let recipe = recipes[indexPath.item]
+      cell.configureCellWith(recipe: recipe)
       return cell
     }
   
