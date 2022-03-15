@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IngredientMetricsView" customModule="Reciplease" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="0xp-lQ-zeL"/>
                 <outlet property="labelLike" destination="bJs-Dg-HdN" id="Ukj-lE-aWh"/>
                 <outlet property="labelTime" destination="Db3-fe-9bT" id="KYA-la-Ot2"/>
             </connections>

@@ -8,10 +8,9 @@
 import UIKit
 
 class IngredientDetailCell: UITableViewCell {
-  
-  var image: UIImage = UIImage(named: "burger")!
   @IBOutlet weak var labelIngredientName: UILabel!
   @IBOutlet weak var labelIngredientDetail: UILabel!
+  @IBOutlet weak var imageViewRecipe: UIImageView!
   
   override func prepareForReuse() {
     super.prepareForReuse()
@@ -20,8 +19,6 @@ class IngredientDetailCell: UITableViewCell {
   
   override func awakeFromNib() {
       super.awakeFromNib()
-      // Initialization code
-    backgroundView =  UIImageView(image: image)
   }
   
   func configureCellWith(name: String, detail: String){

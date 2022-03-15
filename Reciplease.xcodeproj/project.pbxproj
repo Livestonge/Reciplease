@@ -20,8 +20,11 @@
 		0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */; };
 		0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */; };
 		0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */; };
+		098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */; };
+		098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */; };
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D767F527DB4C5D009BA77C /* UIView extension.swift */; };
+		09DD9B9A27DF44DD0011B505 /* RecipesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DD9B9927DF44DD0011B505 /* RecipesHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,10 @@
 		0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
 		0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMetricsView.swift; sourceTree = "<group>"; };
 		0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientMetricsView.xib; sourceTree = "<group>"; };
+		098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesHearderView.swift; sourceTree = "<group>"; };
+		098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
 		09D767F527DB4C5D009BA77C /* UIView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extension.swift"; sourceTree = "<group>"; };
+		09DD9B9927DF44DD0011B505 /* RecipesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipesHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,9 @@
 				091C3EB427D7AD0700319728 /* ViewController.swift */,
 				0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */,
 				091C3EB627D7AD0700319728 /* Main.storyboard */,
+				098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */,
+				09DD9B9927DF44DD0011B505 /* RecipesHeaderView.xib */,
+				098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */,
 				0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */,
 				0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */,
 				0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */,
@@ -253,6 +262,7 @@
 				0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */,
 				099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */,
 				091C3EB827D7AD0700319728 /* Main.storyboard in Resources */,
+				09DD9B9A27DF44DD0011B505 /* RecipesHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +295,8 @@
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,
 				0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */,
 				0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */,
+				098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */,
+				098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

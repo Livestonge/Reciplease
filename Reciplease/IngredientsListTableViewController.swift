@@ -43,6 +43,11 @@ class IngredientsListTableViewController: UITableViewController {
       return cell
     }
   
+ override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let vc = storyboard?.instantiateViewController(withIdentifier: "RecipesDetailViewController") as! RecipesDetailViewController
+    navigationController?.pushViewController(vc, animated: true)
+  }
+  
 
     /*
     // Override to support conditional editing of the table view.

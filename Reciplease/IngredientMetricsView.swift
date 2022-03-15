@@ -7,9 +7,10 @@
 
 import UIKit
 
-@IBDesignable
-class IngredientMetricsView: UIView {
+
+@IBDesignable class IngredientMetricsView: UIView, LoadableView {
   
+  @IBOutlet var containerView: UIView!
   @IBOutlet weak var labelLike: UILabel!
   @IBOutlet weak var labelTime: UILabel!
   
@@ -20,23 +21,26 @@ class IngredientMetricsView: UIView {
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-//    commonInit()
+    commonInit()
   }
   
   private func commonInit() {
     
-    let view = Bundle.main.loadNibNamed("IngredientMetricsView", owner: self, options: nil)?.first as! UIView
-    view.frame = self.bounds
-    view.layer.borderWidth = 0.8
-    view.layer.cornerRadius = 10
-    view.layer.borderColor = UIColor.white.cgColor
-    addSubview(view)
+    containerView = loadViewWith(nibName: "IngredientMetricsView", for: self)
+    containerView.frame = self.bounds
+    addSubview(containerView)
+    containerView.clipsToBounds = true
+    containerView.layer.borderWidth = 0.8
+    containerView.layer.cornerRadius = 10
+    containerView.layer.borderColor = UIColor.white.cgColor
+    
+    containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    
   }
   
   func configure(like: String, time: String){
     self.labelLike.text = like
     self.labelTime.text = time
-    
   }
  
   
