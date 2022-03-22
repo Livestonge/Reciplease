@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       .font: UIFont(name: "Marker felt", size: 23)!
                       ]
     UINavigationBar.appearance().titleTextAttributes = attributes
+    UINavigationBar.appearance().tintColor = .white
     return true
   }
 

@@ -20,8 +20,12 @@
 		0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */; };
 		0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */; };
 		0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */; };
+		09730A3827E7952F00059834 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09730A3727E7952F00059834 /* JsonData.swift */; };
+		09730A3C27E79F7700059834 /* RecipeHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */; };
 		098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */; };
 		098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */; };
+		0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */; };
+		0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */; };
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8627E0A17600B788F6 /* Delegate.swift */; };
 		09D65C8927E0A20E00B788F6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8827E0A20E00B788F6 /* Recipe.swift */; };
@@ -65,8 +69,12 @@
 		0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
 		0945271F27DCCBA6007A1DA6 /* IngredientMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMetricsView.swift; sourceTree = "<group>"; };
 		0945272127DCCBC1007A1DA6 /* IngredientMetricsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientMetricsView.xib; sourceTree = "<group>"; };
+		09730A3727E7952F00059834 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
+		09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesHearderView.swift; sourceTree = "<group>"; };
 		098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
+		0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamApiService.swift; sourceTree = "<group>"; };
+		0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		09D65C8627E0A17600B788F6 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		09D65C8827E0A20E00B788F6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		09D767F527DB4C5D009BA77C /* UIView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extension.swift"; sourceTree = "<group>"; };
@@ -128,6 +136,7 @@
 				091C3EB627D7AD0700319728 /* Main.storyboard */,
 				09D65C8C27E0DA4E00B788F6 /* CustomViews */,
 				0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */,
+				09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */,
 				09D767F527DB4C5D009BA77C /* UIView extension.swift */,
 				091C3EBC27D7AD0800319728 /* Assets.xcassets */,
 				091C3EBE27D7AD0800319728 /* LaunchScreen.storyboard */,
@@ -158,6 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				09D65C8627E0A17600B788F6 /* Delegate.swift */,
+				0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */,
+				09730A3727E7952F00059834 /* JsonData.swift */,
+				0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */,
 				09D65C8827E0A20E00B788F6 /* Recipe.swift */,
 			);
 			path = Model;
@@ -321,11 +333,15 @@
 				0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */,
 				091C3EB527D7AD0700319728 /* ViewController.swift in Sources */,
 				09D65C8927E0A20E00B788F6 /* Recipe.swift in Sources */,
+				09730A3C27E79F7700059834 /* RecipeHeaderTableViewCell.swift in Sources */,
 				091C3EB127D7AD0700319728 /* AppDelegate.swift in Sources */,
+				0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */,
 				09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */,
+				09730A3827E7952F00059834 /* JsonData.swift in Sources */,
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,
 				0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */,
 				0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */,
+				0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */,
 				09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */,
 				098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */,
 				098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */,

@@ -29,7 +29,7 @@ class IngredientDetailCell: UITableViewCell {
     
     downloadImageWith(urlPath: recipe.urlImage)
     self.labelIngredientName.text = recipe.title
-    self.labelIngredientDetail.text = recipe.ingredients
+    self.labelIngredientDetail.text = recipe.ingredients.map(\.food).joined(separator: ",")
   }
   
   private func loadAndAddMetricsView(){
@@ -47,27 +47,11 @@ class IngredientDetailCell: UITableViewCell {
   
   private func downloadImageWith(urlPath: String){
     ImageLoader.downloadImageFrom(url: URL(string: urlPath)!){ [weak self] uiImage in
-      guard let image = uiImage else { return }
-      self?.imageViewRecipe.image = image
+      DispatchQueue.main.async {
+        self?.imageViewRecipe.image = uiImage
+      }
+     
     }
   }
   
-}
-
-
-class ImageLoader{
-  
-  static func downloadImageFrom(url: URL, completion: @escaping (UIImage?) -> Void) {
-    guard ["jpg", "jpeg"].contains(url.pathExtension) else {
-      print("Got a bad link from \(url)")
-      completion(nil)
-      return
-    }
-    let task = URLSession.shared.dataTask(with: url){ data, response , _ in
-             DispatchQueue.main.async {
-               completion(UIImage(data: data ?? Data()))
-             }
-    }
-    task.resume()
-  }
 }
