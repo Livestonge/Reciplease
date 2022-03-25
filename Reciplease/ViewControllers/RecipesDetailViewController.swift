@@ -10,28 +10,33 @@ import UIKit
 class RecipesDetailViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var recipesHeaderView: RecipesHeaderView!
+  var recipe: Recipe?
   
   override func viewDidLoad() {
         super.viewDidLoad()
+    
     tableView.dataSource = self
     tableView.delegate = self
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "recipes detail")
-    }
-
+    tableView.register(RecipeHeaderTableViewCell.self, forCellReuseIdentifier: "recipe header cell")
+    navigationItem.title = "Your recipe"
+  }
 }
 
 
 extension RecipesDetailViewController: UITableViewDelegate, UITableViewDataSource{
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return section == 0 ? 1 : recipe?.ingredients.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    if section == 0{
+      return nil
+    }
     let label = UILabel()
     let title = "Ingredients"
     let markerFelt = UIFont(name: "Marker felt", size: 25)
@@ -42,20 +47,32 @@ extension RecipesDetailViewController: UITableViewDelegate, UITableViewDataSourc
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 50
+    return section == 0 ? 0 : 50
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return indexPath.section == 0 ? self.view.bounds.height / 4 : 80
   }
   
   
-  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    if indexPath.section == 0 {
+      guard let recipe = recipe else { fatalError("No available recipe") }
+      let cell = tableView.dequeueReusableCell(withIdentifier: "recipe header cell") as! RecipeHeaderTableViewCell
+      cell.configureCellWith(recipe: recipe)
+      return cell
+      
+    }
     let cell = tableView.dequeueReusableCell(withIdentifier: "recipes detail")!
     var content = cell.defaultContentConfiguration()
     
-    let ingredient = "burger with cheese and fries"
-    let markerFelt = UIFont(name: "Marker felt", size: 20)
+    let ingredient = recipe?.ingredients[indexPath.row].descriptions ?? ""
+    let markerFelt = UIFont(name: "Marker felt", size: 18)
     let attributedText = NSAttributedString(string: "- \(ingredient.capitalized)",
                                         attributes: [.foregroundColor: UIColor.white, .font: markerFelt!])
     content.attributedText = attributedText
+    content.textProperties.numberOfLines = 2
     cell.contentConfiguration = content
     cell.contentView.backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 0.94)
     return cell

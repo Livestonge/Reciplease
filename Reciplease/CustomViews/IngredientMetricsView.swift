@@ -39,8 +39,8 @@ import UIKit
   }
   
   func configure(like: String, time: String){
-    self.labelLike.text = like
-    self.labelTime.text = time
+    self.labelLike.text = like + " pers"
+    self.labelTime.text = time + " min"
   }
  
   

@@ -42,6 +42,11 @@ class IngredientsListTableViewController: UITableViewController {
   
  override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "RecipesDetailViewController") as! RecipesDetailViewController
+   let recipe = recipes[indexPath.row]
+   vc.recipe = recipe
+//   let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientDetailCell", for: indexPath) as? IngredientDetailCell
+//   let uiImage = cell?.imageViewRecipe.image
+//   vc.uiImage = uiImage
     navigationController?.pushViewController(vc, animated: true)
   }
   

@@ -45,6 +45,20 @@ extension LoadableView{
     containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
   
+  func configureWith(recipe: Recipe){
+    self.labelRecipesTitle.text = recipe.title
+    self.ingredientMetricRecipes.configure(like: recipe.metrics.numberOfLikes,
+                                           time: recipe.metrics.remainingTime)
+  
+    guard let url = URL(string: recipe.urlImage) else { return }
+    
+    ImageLoader.downloadImageFrom(url: url){ uiImage in
+      DispatchQueue.main.async {
+        self.imageViewRecipes.image = uiImage
+      }
+    }
+  }
+  
 }
 
 
