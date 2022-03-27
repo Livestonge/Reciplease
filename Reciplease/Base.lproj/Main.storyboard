@@ -33,7 +33,7 @@
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Add"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                                <buttonConfiguration key="configuration" style="plain" image="st" title="Add">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
@@ -55,7 +55,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1b3-s5-Rfh" firstAttribute="height" secondItem="qTr-qE-Me8" secondAttribute="height" multiplier="0.2" id="5ji-R4-3LB"/>
                                     <constraint firstAttribute="trailing" secondItem="7hP-8T-KJQ" secondAttribute="trailing" constant="20" id="EUh-5X-wFD"/>
@@ -98,7 +98,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hfI-oM-gAG">
                                 <rect key="frame" x="0.0" y="314" width="414" height="461"/>
                                 <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="sectionIndexBackgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Ingredient cell" textLabel="Bwm-Oo-YR8" style="IBUITableViewCellStyleDefault" id="SRI-5U-3h5">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -168,9 +168,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023.1884057971015" y="79.6875"/>
+            <point key="canvasLocation" x="1933.3333333333335" y="79.6875"/>
         </scene>
-        <!--Ingredients List Table View Controller-->
+        <!--Favorites-->
         <scene sceneID="PYt-93-tal">
             <objects>
                 <tableViewController storyboardIdentifier="IngredientsListTableViewController" id="k39-Yg-Rek" customClass="IngredientsListTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -238,11 +238,12 @@
                             <outlet property="delegate" destination="k39-Yg-Rek" id="CiF-Fi-cUs"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Favorites" id="5WT-50-m74"/>
                     <navigationItem key="navigationItem" id="nNT-js-P5B"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Q5-ap-HR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918.840579710145" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1020" y="815"/>
         </scene>
         <!--Recipes Detail View Controller-->
         <scene sceneID="YAI-iw-qha">
@@ -313,12 +314,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNz-eI-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986.9565217391305" y="79.6875"/>
+            <point key="canvasLocation" x="2983" y="80"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="DTs-qe-QEc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9d0-5g-YFY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9d0-5g-YFY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="r6P-er-NdT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6f3-kb-dd8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -331,14 +333,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5c-5n-07K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113.04347826086958" y="79.6875"/>
+            <point key="canvasLocation" x="1023.1884057971015" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
         <image name="burger" width="960" height="592"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="st" width="128" height="128"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

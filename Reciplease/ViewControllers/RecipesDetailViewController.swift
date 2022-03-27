@@ -11,6 +11,7 @@ class RecipesDetailViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   var recipe: Recipe?
+  private var favoritesNavBarItem: UIBarButtonItem?
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,18 @@ class RecipesDetailViewController: UIViewController {
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "recipes detail")
     tableView.register(RecipeHeaderTableViewCell.self, forCellReuseIdentifier: "recipe header cell")
     navigationItem.title = "Your recipe"
+    self.favoritesNavBarItem = UIBarButtonItem(image: UIImage(systemName: "star"),
+                                              style: .plain,
+                                              target: self,
+                                              action: #selector(didTapOnFavoritesNavBarItem))
+    navigationItem.rightBarButtonItem = self.favoritesNavBarItem
+  }
+  
+  @objc
+  func didTapOnFavoritesNavBarItem(){
+    self.favoritesNavBarItem?.tintColor = .yellow
+    guard let tabBarVC = self.tabBarController as? TabBarViewController, let recipe = recipe else { return }
+    tabBarVC.recipes.append(recipe)
   }
 }
 

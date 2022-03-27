@@ -19,8 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       .foregroundColor: UIColor.white,
                       .font: UIFont(name: "Marker felt", size: 23)!
                       ]
-    UINavigationBar.appearance().titleTextAttributes = attributes
+    let backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)
+    
+    let navBarAppearance = UINavigationBarAppearance()
+    navBarAppearance.backgroundColor = backgroundColor
+    navBarAppearance.titleTextAttributes = attributes
+    
     UINavigationBar.appearance().tintColor = .white
+    UINavigationBar.appearance().standardAppearance = navBarAppearance
+    UITabBar.appearance().unselectedItemTintColor = UIColor(white: 0.6, alpha: 1)
+    
     return true
   }
 

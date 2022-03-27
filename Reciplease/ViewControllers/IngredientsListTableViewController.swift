@@ -14,6 +14,14 @@ class IngredientsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       navigationItem.title = "Results"
+//      let attributes: [NSAttributedString.Key: Any] = [
+//                        .foregroundColor: UIColor.white,
+//                        .font: UIFont(name: "Marker felt", size: 23)!
+//                        ]
+//      let tabBarItem = UITabBarItem()
+//      self.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+//      tabBarItem.title = "Favorites"
+//      self.tabBarItem = tabBarItem
     }
 
     // MARK: - Table view data source
