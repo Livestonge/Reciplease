@@ -74,6 +74,7 @@ extension RecipesDetailViewController: UITableViewDelegate, UITableViewDataSourc
       guard let recipe = recipe else { fatalError("No available recipe") }
       let cell = tableView.dequeueReusableCell(withIdentifier: "recipe header cell") as! RecipeHeaderTableViewCell
       cell.configureCellWith(recipe: recipe)
+      
       return cell
       
     }

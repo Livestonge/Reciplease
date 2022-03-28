@@ -28,6 +28,8 @@ extension LoadableView{
   @IBOutlet weak var labelRecipesTitle: UILabel!
   @IBOutlet weak var ingredientMetricRecipes: IngredientMetricsView!
   
+  @IBOutlet weak var backgroundViewForTitle: UIView!
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
@@ -43,6 +45,26 @@ extension LoadableView{
     containerView.frame = self.bounds
     addSubview(containerView)
     containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    addGradientBackground()
+  }
+  
+  private func addGradientBackground(){
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    backgroundViewForTitle.addSubview(view)
+    backgroundViewForTitle.sendSubviewToBack(view)
+
+    NSLayoutConstraint.activate([
+      view.centerXAnchor.constraint(equalTo: backgroundViewForTitle.centerXAnchor),
+      view.centerYAnchor.constraint(equalTo: backgroundViewForTitle.centerYAnchor),
+      view.widthAnchor.constraint(equalTo: backgroundViewForTitle.widthAnchor),
+      view.heightAnchor.constraint(equalTo: backgroundViewForTitle.heightAnchor)
+    ])
+    gradientLayer.frame = backgroundViewForTitle.bounds
+    view.layer.insertSublayer(gradientLayer, at: 0)
+    view.clipsToBounds = true
   }
   
   func configureWith(recipe: Recipe){

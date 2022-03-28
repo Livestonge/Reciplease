@@ -13,13 +13,30 @@ class IngredientDetailCell: UITableViewCell {
   @IBOutlet weak var imageViewRecipe: UIImageView!
   private var ingredientsMetricsView: IngredientMetricsView!
   
-  override func prepareForReuse() {
-    super.prepareForReuse()
-    
-  }
+  @IBOutlet weak var backgroundViewForStack: UIView!
   
   override func awakeFromNib() {
-      super.awakeFromNib()
+    super.awakeFromNib()
+    addGradientBackground()
+  }
+  
+  private func addGradientBackground(){
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+    let gradientView = UIView()
+    gradientView.translatesAutoresizingMaskIntoConstraints = false
+    self.backgroundViewForStack.addSubview(gradientView)
+    self.backgroundViewForStack.sendSubviewToBack(gradientView)
+
+    NSLayoutConstraint.activate([
+      gradientView.centerXAnchor.constraint(equalTo: self.backgroundViewForStack.centerXAnchor),
+      gradientView.centerYAnchor.constraint(equalTo: self.backgroundViewForStack.centerYAnchor),
+      gradientView.widthAnchor.constraint(equalTo: self.backgroundViewForStack.widthAnchor),
+      gradientView.heightAnchor.constraint(equalTo: self.backgroundViewForStack.heightAnchor)
+    ])
+    gradientLayer.frame = self.backgroundViewForStack.bounds
+    gradientView.layer.insertSublayer(gradientLayer, at: 0)
+    gradientView.clipsToBounds = true
   }
   
   func configureCellWith(recipe: Recipe){
