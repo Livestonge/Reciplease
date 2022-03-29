@@ -305,6 +305,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapGetDirectionButton:" destination="jbj-E6-tf9" eventType="touchUpInside" id="0SM-BY-zgM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lAC-tC-vm2"/>

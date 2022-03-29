@@ -34,6 +34,10 @@ class RecipesDetailViewController: UIViewController {
     guard let tabBarVC = self.tabBarController as? TabBarViewController, let recipe = recipe else { return }
     tabBarVC.recipes.append(recipe)
   }
+  @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
+    guard let url = URL(string: recipe?.sourcePath ?? "") else { return }
+    UIApplication.shared.open(url)
+  }
 }
 
 
