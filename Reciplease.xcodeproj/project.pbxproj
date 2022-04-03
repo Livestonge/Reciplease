@@ -28,6 +28,9 @@
 		0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */; };
 		0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */; };
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
+		09CE6F3527F85CCE00685ADB /* FavoritesRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */; };
+		09CE6F3727F86B7E00685ADB /* Empty favorites recipes view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */; };
+		09CE6F3927F876B300685ADB /* EmptyFavoriteRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE6F3827F876B300685ADB /* EmptyFavoriteRecipesView.swift */; };
 		09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8627E0A17600B788F6 /* Delegate.swift */; };
 		09D65C8927E0A20E00B788F6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8827E0A20E00B788F6 /* Recipe.swift */; };
 		09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D767F527DB4C5D009BA77C /* UIView extension.swift */; };
@@ -77,6 +80,9 @@
 		098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
 		0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamApiService.swift; sourceTree = "<group>"; };
 		0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecipesTableViewController.swift; sourceTree = "<group>"; };
+		09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Empty favorites recipes view.xib"; sourceTree = "<group>"; };
+		09CE6F3827F876B300685ADB /* EmptyFavoriteRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFavoriteRecipesView.swift; sourceTree = "<group>"; };
 		09D65C8627E0A17600B788F6 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		09D65C8827E0A20E00B788F6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		09D767F527DB4C5D009BA77C /* UIView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extension.swift"; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 				09D65C8B27E0DA2800B788F6 /* ViewControllers */,
 				09D65C8A27E0D92F00B788F6 /* Model */,
 				091C3EB627D7AD0700319728 /* Main.storyboard */,
+				09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */,
+				09CE6F3827F876B300685ADB /* EmptyFavoriteRecipesView.swift */,
 				09D65C8C27E0DA4E00B788F6 /* CustomViews */,
 				0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */,
 				09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */,
@@ -182,6 +190,7 @@
 			children = (
 				091C3EB427D7AD0700319728 /* ViewController.swift */,
 				0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */,
+				09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */,
 				094442B027EE4BEA0020A453 /* TabBarViewController.swift */,
 				098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */,
 			);
@@ -303,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CE6F3727F86B7E00685ADB /* Empty favorites recipes view.xib in Resources */,
 				091C3EC027D7AD0800319728 /* LaunchScreen.storyboard in Resources */,
 				0945272227DCCBC1007A1DA6 /* IngredientMetricsView.xib in Resources */,
 				099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */,
@@ -335,12 +345,14 @@
 				091C3EBB27D7AD0700319728 /* Reciplease.xcdatamodeld in Sources */,
 				0945272027DCCBA6007A1DA6 /* IngredientMetricsView.swift in Sources */,
 				091C3EB527D7AD0700319728 /* ViewController.swift in Sources */,
+				09CE6F3527F85CCE00685ADB /* FavoritesRecipesTableViewController.swift in Sources */,
 				09D65C8927E0A20E00B788F6 /* Recipe.swift in Sources */,
 				09730A3C27E79F7700059834 /* RecipeHeaderTableViewCell.swift in Sources */,
 				091C3EB127D7AD0700319728 /* AppDelegate.swift in Sources */,
 				0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */,
 				09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */,
 				09730A3827E7952F00059834 /* JsonData.swift in Sources */,
+				09CE6F3927F876B300685ADB /* EmptyFavoriteRecipesView.swift in Sources */,
 				094442B127EE4BEA0020A453 /* TabBarViewController.swift in Sources */,
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,
 				0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */,

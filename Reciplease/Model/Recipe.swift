@@ -14,6 +14,7 @@ struct Recipe {
   let ingredients: [Ingredient]
   let sourcePath: String
   let metrics: Metrics
+  var isUserFavorite: Bool = false
 }
 
 extension Recipe: Codable {

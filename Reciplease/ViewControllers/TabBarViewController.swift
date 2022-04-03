@@ -44,14 +44,14 @@ class TabBarViewController: UITabBarController {
     
     let storybard = UIStoryboard(name: "Main",bundle: Bundle.main)
     guard let navigationVC = storybard.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController,
-    let ingredientListVC = storybard.instantiateViewController(withIdentifier: "IngredientsListTableViewController") as? IngredientsListTableViewController else { return }
+    let favoriteRecipeVC = storybard.instantiateViewController(withIdentifier: "FavoritesRecipesTableViewController") as? FavoritesRecipesTableViewController else { return }
     
     let navVCTabBarItem = UITabBarItem()
     navVCTabBarItem.title = "Search"
     navigationVC.tabBarItem = navVCTabBarItem
     
     let ingredientListNavVC = UINavigationController()
-    ingredientListNavVC.viewControllers = [ingredientListVC]
+    ingredientListNavVC.viewControllers = [favoriteRecipeVC]
     let ingredientListVCTabBarItem = UITabBarItem()
     ingredientListVCTabBarItem.title = "Favorites"
     ingredientListNavVC.tabBarItem = ingredientListVCTabBarItem
@@ -63,15 +63,14 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: UITabBarControllerDelegate {
   
-  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    if let navVC = viewController as? UINavigationController, let vc = navVC.topViewController as? IngredientsListTableViewController {
-      vc.recipes = self.recipes
-    }
-    return true
-  }
+//  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//    self.isShowingFavorites = tabBarController.selectedIndex == 1 ? true : false
+//    print("-\(isShowingFavorites)")
+//    return true
+//  }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    if let navVC = viewController as? UINavigationController, let vc = navVC.topViewController as? IngredientsListTableViewController {
+    if let navVC = viewController as? UINavigationController, let vc = navVC.topViewController as? FavoritesRecipesTableViewController {
       vc.recipes = self.recipes
     }
   }

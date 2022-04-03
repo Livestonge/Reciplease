@@ -170,7 +170,90 @@
             </objects>
             <point key="canvasLocation" x="1933.3333333333335" y="79.6875"/>
         </scene>
-        <!--Favorites-->
+        <!--Favorites Recipes Table View Controller-->
+        <scene sceneID="5Py-0I-oXf">
+            <objects>
+                <tableViewController storyboardIdentifier="FavoritesRecipesTableViewController" id="nGn-Nf-Lb1" customClass="FavoritesRecipesTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cs7-dU-HiD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.16165295243263245" green="0.15669551491737366" blue="0.16108840703964233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientDetailCell" rowHeight="200" id="upR-UV-VOZ" customClass="IngredientDetailCell" customModule="Reciplease" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="upR-UV-VOZ" id="kdS-M9-vGt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burger" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-Kg-JVq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1j-KA-U8i">
+                                            <rect key="frame" x="0.0" y="137" width="414" height="63"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t0P-24-YGK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margarita pizza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-uF-DYt">
+                                                            <rect key="frame" x="120" y="0.0" width="174.5" height="27.5"/>
+                                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomatoes, olives, mozzarella" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWw-aV-F7m">
+                                                            <rect key="frame" x="101.5" y="35.5" width="211" height="27.5"/>
+                                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="NWw-aV-F7m" secondAttribute="bottom" id="6Mn-Fv-3mO"/>
+                                                        <constraint firstItem="hpE-uF-DYt" firstAttribute="top" secondItem="t0P-24-YGK" secondAttribute="top" id="yN1-U1-QEK"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="t0P-24-YGK" firstAttribute="top" secondItem="s1j-KA-U8i" secondAttribute="top" id="GOy-db-doT"/>
+                                                <constraint firstItem="NWw-aV-F7m" firstAttribute="centerX" secondItem="s1j-KA-U8i" secondAttribute="centerX" id="QtX-6u-3OM"/>
+                                                <constraint firstItem="hpE-uF-DYt" firstAttribute="centerX" secondItem="s1j-KA-U8i" secondAttribute="centerX" id="pLe-zz-nne"/>
+                                                <constraint firstAttribute="bottom" secondItem="t0P-24-YGK" secondAttribute="bottom" id="qQY-Nf-Nk2"/>
+                                                <constraint firstItem="t0P-24-YGK" firstAttribute="leading" secondItem="s1j-KA-U8i" secondAttribute="leading" id="svD-qH-6xU"/>
+                                                <constraint firstAttribute="trailing" secondItem="t0P-24-YGK" secondAttribute="trailing" id="ycS-rh-bP9"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bK6-Kg-JVq" firstAttribute="top" secondItem="kdS-M9-vGt" secondAttribute="top" id="8zo-eF-qbY"/>
+                                        <constraint firstAttribute="bottom" secondItem="bK6-Kg-JVq" secondAttribute="bottom" id="Htd-M5-OkH"/>
+                                        <constraint firstAttribute="bottom" secondItem="s1j-KA-U8i" secondAttribute="bottom" id="Ip1-PZ-Y0J"/>
+                                        <constraint firstItem="s1j-KA-U8i" firstAttribute="leading" secondItem="bK6-Kg-JVq" secondAttribute="leading" id="KwK-tk-COg"/>
+                                        <constraint firstItem="s1j-KA-U8i" firstAttribute="leading" secondItem="kdS-M9-vGt" secondAttribute="leading" id="VzB-7Z-rx8"/>
+                                        <constraint firstItem="s1j-KA-U8i" firstAttribute="trailing" secondItem="bK6-Kg-JVq" secondAttribute="trailing" id="eZv-IU-UJU"/>
+                                        <constraint firstAttribute="trailing" secondItem="s1j-KA-U8i" secondAttribute="trailing" id="esR-nO-yE3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.16165536642074585" green="0.15669351816177368" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="backgroundViewForStack" destination="t0P-24-YGK" id="vf6-18-eq8"/>
+                                    <outlet property="imageViewRecipe" destination="bK6-Kg-JVq" id="I22-uD-DmJ"/>
+                                    <outlet property="labelIngredientDetail" destination="NWw-aV-F7m" id="oFX-o7-js6"/>
+                                    <outlet property="labelIngredientName" destination="hpE-uF-DYt" id="Kpw-4N-f0o"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nGn-Nf-Lb1" id="diT-8H-AW3"/>
+                            <outlet property="delegate" destination="nGn-Nf-Lb1" id="gua-6V-H8U"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iq-F6-XPk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1933" y="812"/>
+        </scene>
+        <!--Ingredients List Table View Controller-->
         <scene sceneID="PYt-93-tal">
             <objects>
                 <tableViewController storyboardIdentifier="IngredientsListTableViewController" id="k39-Yg-Rek" customClass="IngredientsListTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,12 +332,11 @@
                             <outlet property="delegate" destination="k39-Yg-Rek" id="CiF-Fi-cUs"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="5WT-50-m74"/>
                     <navigationItem key="navigationItem" id="nNT-js-P5B"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Q5-ap-HR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="815"/>
+            <point key="canvasLocation" x="2990" y="80"/>
         </scene>
         <!--Recipes Detail View Controller-->
         <scene sceneID="YAI-iw-qha">
@@ -328,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNz-eI-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2983" y="80"/>
+            <point key="canvasLocation" x="3999" y="80"/>
         </scene>
         <!--Search-->
         <scene sceneID="DTs-qe-QEc">
