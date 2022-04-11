@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="StoredIngredient" representedClassName=".StoredIngredient" syncable="YES" codeGenerationType="category">
+        <attribute name="descriptions" optional="YES" attributeType="String"/>
+        <attribute name="food" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredRecipe" inverseName="ingredients" inverseEntity="StoredRecipe"/>
+    </entity>
+    <entity name="StoredMetric" representedClassName=".StoredMetric" syncable="YES" codeGenerationType="category">
+        <attribute name="numberOfLikes" optional="YES" attributeType="String"/>
+        <attribute name="remainingTime" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoredRecipe" inverseName="metric" inverseEntity="StoredRecipe"/>
+    </entity>
+    <entity name="StoredRecipe" representedClassName=".StoredRecipe" syncable="YES" codeGenerationType="category">
+        <attribute name="isUserFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sourcePath" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="urlImage" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StoredIngredient" inverseName="recipe" inverseEntity="StoredIngredient"/>
+        <relationship name="metric" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StoredMetric" inverseName="recipe" inverseEntity="StoredMetric"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="title"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="StoredIngredient" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="StoredMetric" positionX="-54" positionY="9" width="128" height="74"/>
+        <element name="StoredRecipe" positionX="-36" positionY="27" width="128" height="119"/>
+    </elements>
 </model>

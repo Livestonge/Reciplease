@@ -11,8 +11,6 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
   
-  var recipes = [Recipe]()
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     let backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)
@@ -51,6 +49,7 @@ class TabBarViewController: UITabBarController {
     navigationVC.tabBarItem = navVCTabBarItem
     
     let ingredientListNavVC = UINavigationController()
+    favoriteRecipeVC.savedRecipeProvider = StoredDataManager()
     ingredientListNavVC.viewControllers = [favoriteRecipeVC]
     let ingredientListVCTabBarItem = UITabBarItem()
     ingredientListVCTabBarItem.title = "Favorites"
@@ -61,17 +60,4 @@ class TabBarViewController: UITabBarController {
   }
 }
 
-extension TabBarViewController: UITabBarControllerDelegate {
-  
-//  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//    self.isShowingFavorites = tabBarController.selectedIndex == 1 ? true : false
-//    print("-\(isShowingFavorites)")
-//    return true
-//  }
-  
-  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    if let navVC = viewController as? UINavigationController, let vc = navVC.topViewController as? FavoritesRecipesTableViewController {
-      vc.recipes = self.recipes
-    }
-  }
-}
+extension TabBarViewController: UITabBarControllerDelegate {}

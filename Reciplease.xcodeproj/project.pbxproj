@@ -25,6 +25,10 @@
 		09730A3C27E79F7700059834 /* RecipeHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */; };
 		098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */; };
 		098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */; };
+		098953682804624800E69303 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098953672804624800E69303 /* CoreDataStack.swift */; };
+		0989536A2804647F00E69303 /* StoredObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098953692804647F00E69303 /* StoredObject.swift */; };
+		0989536C280464C900E69303 /* StoredDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989536B280464C900E69303 /* StoredDataManager.swift */; };
+		0989536F28047F6E00E69303 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989536E28047F6E00E69303 /* Helper.swift */; };
 		0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */; };
 		0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */; };
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
@@ -78,6 +82,10 @@
 		09730A3B27E79F7700059834 /* RecipeHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		098187EA27DF4F23005DDC93 /* RecipesHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesHearderView.swift; sourceTree = "<group>"; };
 		098187EC27DF5A42005DDC93 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
+		098953672804624800E69303 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Reciplease/Model/Model persistence/CoreDataStack.swift"; sourceTree = SOURCE_ROOT; };
+		098953692804647F00E69303 /* StoredObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredObject.swift; sourceTree = "<group>"; };
+		0989536B280464C900E69303 /* StoredDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDataManager.swift; sourceTree = "<group>"; };
+		0989536E28047F6E00E69303 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamApiService.swift; sourceTree = "<group>"; };
 		0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecipesTableViewController.swift; sourceTree = "<group>"; };
@@ -173,9 +181,21 @@
 			path = RecipleaseUITests;
 			sourceTree = "<group>";
 		};
+		0989536D28047EDD00E69303 /* Model persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0989536B280464C900E69303 /* StoredDataManager.swift */,
+				098953692804647F00E69303 /* StoredObject.swift */,
+				098953672804624800E69303 /* CoreDataStack.swift */,
+				0989536E28047F6E00E69303 /* Helper.swift */,
+			);
+			path = "Model persistence";
+			sourceTree = "<group>";
+		};
 		09D65C8A27E0D92F00B788F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0989536D28047EDD00E69303 /* Model persistence */,
 				09D65C8627E0A17600B788F6 /* Delegate.swift */,
 				0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */,
 				09730A3727E7952F00059834 /* JsonData.swift */,
@@ -355,10 +375,14 @@
 				09CE6F3927F876B300685ADB /* EmptyFavoriteRecipesView.swift in Sources */,
 				094442B127EE4BEA0020A453 /* TabBarViewController.swift in Sources */,
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,
+				0989536A2804647F00E69303 /* StoredObject.swift in Sources */,
+				0989536C280464C900E69303 /* StoredDataManager.swift in Sources */,
 				0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */,
 				0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */,
+				098953682804624800E69303 /* CoreDataStack.swift in Sources */,
 				0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */,
 				09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */,
+				0989536F28047F6E00E69303 /* Helper.swift in Sources */,
 				098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */,
 				098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */,
 			);

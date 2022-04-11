@@ -10,7 +10,7 @@ import UIKit
 class RecipesDetailViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  var recipe: Recipe?{ didSet{ self.updateStoredRecipes() }}
+  var recipe: Recipe?
   private var favoritesNavBarItem: UIBarButtonItem?
   
   private var isUserFavorite: Bool {
@@ -28,17 +28,6 @@ class RecipesDetailViewController: UIViewController {
     setUpFavoritesIcon()
   }
   
-  private func updateStoredRecipes(){
-    
-    guard recipe?.isUserFavorite == false, let tabBarVc = self.tabBarController as? TabBarViewController
-    else { return }
-    var recipes = tabBarVc.recipes
-    let title = self.recipe?.title
-    guard let index = recipes.firstIndex(where: { $0.title == title }) else { return }
-    recipes.remove(at: index)
-    tabBarVc.recipes = recipes
-  }
-  
   private func setUpFavoritesIcon(){
     self.favoritesNavBarItem = UIBarButtonItem(image: UIImage(systemName: "star"),
                                               style: .plain,
@@ -51,22 +40,12 @@ class RecipesDetailViewController: UIViewController {
   @objc
   func didTapOnFavoritesNavBarItem(){
     self.isUserFavorite.toggle()
-    guard let recipe = self.recipe else { return }
     self.favoritesNavBarItem?.tintColor = isUserFavorite ? .yellow : .gray
-    if recipe.isUserFavorite == true {
-      guard let tabBarVC = self.tabBarController as? TabBarViewController else { return }
-      tabBarVC.recipes.append(recipe)
-    }else{
-      self.removeRecipeFromUserFavorites()
-    }
+    guard let recipe = self.recipe else { return }
+    NotificationCenter.default.post(name: .updateRecipe,
+                                    object: nil,
+                                    userInfo: ["recipe": recipe])
    
-  }
-  private func removeRecipeFromUserFavorites(){
-    let title = self.recipe?.title ?? ""
-    guard let tabBarVC = self.tabBarController as? TabBarViewController else { return }
-    tabBarVC.recipes.removeAll{  favoriteRecipe in
-      return favoriteRecipe.title == title
-    }
   }
   
   @IBAction func didTapGetDirectionButton(_ sender: UIButton) {

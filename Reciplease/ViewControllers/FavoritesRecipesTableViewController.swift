@@ -10,6 +10,8 @@ import UIKit
 class FavoritesRecipesTableViewController: UITableViewController {
 
   var recipes: [Recipe]!
+  var savedRecipeProvider: SavedRecipeProvider!
+  
   private var emptyView: EmptyFavoriteRecipesView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +26,10 @@ class FavoritesRecipesTableViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    guard let tabBarVC = self.tabBarController as? TabBarViewController else { return }
-    self.recipes = tabBarVC.recipes
-    self.tableView.reloadData()
+    savedRecipeProvider.getStoredRecipes{ [weak self] savedRecipes in
+      self?.recipes = savedRecipes
+      self?.tableView.reloadData()
+    }
     addEmptyView()
   }
   
