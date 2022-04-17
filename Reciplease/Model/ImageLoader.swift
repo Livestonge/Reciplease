@@ -10,19 +10,21 @@ import UIKit
 
 class ImageLoader{
   
-  static func downloadImageFrom(url: URL, completion: @escaping (UIImage) -> Void) {
+  static func downloadImageFrom(url: URL, completion: @escaping (UIImage, URL) -> Void) {
     
     var image = UIImage(named: "no_image_available")!
     
     let task = URLSession.shared.downloadTask(with: url){ tempUrl, _, _ in
       
       guard let tempUrl = tempUrl,
-            let data = try? Data(contentsOf: tempUrl),
-            let downloadedImage = UIImage(data: data)
+            let data = try? Data(contentsOf: tempUrl)
       else { return }
       
-      image = downloadedImage
-      completion(image)
+      if let downloadedImage = UIImage(data: data){
+        image = downloadedImage
+      }
+      
+      completion(image, url)
     }
     task.resume()
   }

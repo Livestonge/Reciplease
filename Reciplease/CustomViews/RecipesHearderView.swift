@@ -74,8 +74,9 @@ extension LoadableView{
   
     guard let url = URL(string: recipe.urlImage) else { return }
     
-    ImageLoader.downloadImageFrom(url: url){ uiImage in
+    ImageLoader.downloadImageFrom(url: url){ uiImage, sourceUrl in
       DispatchQueue.main.async {
+        guard url.path == sourceUrl.path else { return }
         self.imageViewRecipes.image = uiImage
       }
     }
