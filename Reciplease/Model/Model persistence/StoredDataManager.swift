@@ -21,6 +21,9 @@ class StoredDataManager: SavedRecipeProvider {
                                            object: nil)
   }
   
+  deinit{
+    NotificationCenter.default.removeObserver(self)
+  }
   
   @objc
   func handle(_ notification: Notification){
@@ -59,6 +62,14 @@ class StoredDataManager: SavedRecipeProvider {
       fatalError("Failed to save because of \(error.localizedDescription)")
     }
     
+  }
+  
+  func clearDataBase(){
+    getStoredRecipes{recipes in
+      recipes.forEach{
+        self.delete($0)
+      }
+    }
   }
   
   private func delete(_ recipe: Recipe){
