@@ -10,7 +10,7 @@ import Alamofire
 
 class EdamamRestAPIService{
   
-  let apiKey = "783dafdf2a55bb4338bfdbc94a8b37eb"
+  
   let app_id = "e1c9b8c2"
   private let scheme = "https"
   private let hostUrl = "api.edamam.com"

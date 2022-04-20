@@ -40,6 +40,7 @@
 		09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8627E0A17600B788F6 /* Delegate.swift */; };
 		09D65C8927E0A20E00B788F6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D65C8827E0A20E00B788F6 /* Recipe.swift */; };
 		09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D767F527DB4C5D009BA77C /* UIView extension.swift */; };
+		09D8962A281074400067140F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D89629281074400067140F /* ApiKey.swift */; };
 		09DD9B9A27DF44DD0011B505 /* RecipesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DD9B9927DF44DD0011B505 /* RecipesHeaderView.xib */; };
 		C855C586DE03E9DCB7995FF9 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834F70D882073B48045FC3A4 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		09D65C8627E0A17600B788F6 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		09D65C8827E0A20E00B788F6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		09D767F527DB4C5D009BA77C /* UIView extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView extension.swift"; sourceTree = "<group>"; };
+		09D89629281074400067140F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		09DD9B9927DF44DD0011B505 /* RecipesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipesHeaderView.xib; sourceTree = "<group>"; };
 		65FA11C27A962EAA68CEF757 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		834F70D882073B48045FC3A4 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +139,6 @@
 				65FA11C27A962EAA68CEF757 /* Pods-Reciplease.debug.xcconfig */,
 				DF429CD752492E4485B875B7 /* Pods-Reciplease.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,6 +222,7 @@
 				0989536D28047EDD00E69303 /* Model persistence */,
 				09D65C8627E0A17600B788F6 /* Delegate.swift */,
 				0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */,
+				09D89629281074400067140F /* ApiKey.swift */,
 				09730A3727E7952F00059834 /* JsonData.swift */,
 				0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */,
 				09D65C8827E0A20E00B788F6 /* Recipe.swift */,
@@ -447,6 +449,7 @@
 				0999FCAC27E9E2B0000DE4A4 /* ImageLoader.swift in Sources */,
 				09D767F627DB4C5D009BA77C /* UIView extension.swift in Sources */,
 				09730A3827E7952F00059834 /* JsonData.swift in Sources */,
+				09D8962A281074400067140F /* ApiKey.swift in Sources */,
 				09CE6F3927F876B300685ADB /* EmptyFavoriteRecipesView.swift in Sources */,
 				094442B127EE4BEA0020A453 /* TabBarViewController.swift in Sources */,
 				091C3EB327D7AD0700319728 /* SceneDelegate.swift in Sources */,

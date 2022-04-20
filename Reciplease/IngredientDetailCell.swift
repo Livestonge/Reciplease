@@ -63,7 +63,9 @@ class IngredientDetailCell: UITableViewCell {
   }
   
   private func downloadImageWith(urlPath: String){
-    let sourceUrl = URL(string: urlPath)!
+    
+    guard let sourceUrl = URL(string: urlPath) else { return }
+
     ImageLoader.downloadImageFrom(url: sourceUrl){ [weak self] uiImage, url in
       DispatchQueue.main.async {
         guard sourceUrl.path == url.path else { return }
