@@ -18,7 +18,11 @@ class ImageLoader{
       
       guard let tempUrl = tempUrl,
             let data = try? Data(contentsOf: tempUrl)
-      else { return }
+      else {
+        print("Failed to download image for \(url)")
+        completion(image, url)
+        return
+      }
       
       if let downloadedImage = UIImage(data: data){
         image = downloadedImage
