@@ -21,18 +21,6 @@ class TestEdamamApiService: XCTestCase {
       self.sut = nil
     }
   
-  func testForUrlHost() throws{
-    let host = "api.edamam.com"
-    let url = sut.getEdamamUrlFor(ingredients: ["tomatoes", "onions"])
-    XCTAssertEqual(host, url.host)
-  }
-  
-  func testEdammamUrlPath() throws {
-    let path = "/api/recipes/v2"
-    let url = sut.getEdamamUrlFor(ingredients: ["tomatoes", "onions"])
-    XCTAssertEqual(path, url.path)
-  }
-  
   func testGetRecipes() throws {
     let ingredients = ["Tomatoes", "onion", "egg"]
     sut.getRecipesFor(ingredients: ingredients){ recipes in
