@@ -29,6 +29,13 @@ class EdamamRestAPIService{
     
     self.params["q"] = ingredients.joined(separator: " ")
     
+    var component = URLComponents()
+    component.scheme = "https"
+    component.host = "api.edamam.com"
+    component.path = "/api/recipes/v2"
+    component.queryItems = params.map{ URLQueryItem(name: $0.key, value: $0.value) }
+    print("URL: \(component.url!)")
+    
     Alamofire.request(url, parameters: params)
              .validate()
              .response(queue: .main){ responseData in
@@ -47,7 +54,7 @@ class MockEdamApiService: EdamamRestAPIService{
   
   override func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) -> Void) {
     
-    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData)
+    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
     completion(recipes?.recipes ?? [])
   }
 }

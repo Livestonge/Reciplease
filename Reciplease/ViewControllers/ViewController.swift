@@ -15,6 +15,7 @@ class ViewController: UIViewController {
   
   var ingredients: [String] = []
   var recipesProvider: RecipesProviderDelegate!
+  private var isLoading = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,15 +55,17 @@ class ViewController: UIViewController {
   
   @IBAction
   func didTapSearchButton(sender: UIButton){
+    guard isLoading == false else { return }
+    isLoading = true
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "IngredientsListTableViewController") as? IngredientsListTableViewController
     else {fatalError("Failed to load IngredientsListVC")}
     recipesProvider.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
     DispatchQueue.main.async {
         vc.recipes = recipes
+        self?.isLoading = false
         self?.navigationController?.pushViewController(vc, animated: true)
       }
     }
-    
   }
 }
 

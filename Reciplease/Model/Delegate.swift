@@ -21,7 +21,7 @@ class RecipesProviding: RecipesProviderDelegate {
   func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) -> Void){
     
 //    service.getRecipesFor(ingredients: ingredients, completion: completion)
-    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData)
+    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
     completion(recipes?.recipes ?? [])
 
   }
