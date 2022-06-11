@@ -40,17 +40,22 @@ class IngredientDetailCell: UITableViewCell {
   }
   
   func configureCellWith(recipe: Recipe){
-    loadAndAddMetricsView()
-    self.ingredientsMetricsView.configure(like: recipe.metrics.numberOfLikes,
-                                time: recipe.metrics.remainingTime)
+    loadAndAddMetricsViewWith(metrics: recipe.metrics)
+    makeAccessibleWith(recipe: recipe)
     
     downloadImageWith(urlPath: recipe.urlImage)
+    self.labelIngredientName.font = .preferredFont(forTextStyle: .title2)
     self.labelIngredientName.text = recipe.title
+    self.labelIngredientDetail.font = .preferredFont(forTextStyle: .body)
     self.labelIngredientDetail.text = recipe.ingredients.map(\.food).joined(separator: ",")
   }
   
-  private func loadAndAddMetricsView(){
+  private func loadAndAddMetricsViewWith(metrics: Metrics){
     self.ingredientsMetricsView = IngredientMetricsView()
+    self.ingredientsMetricsView.makeAccessibleWith(likes: metrics.numberOfLikes,
+                                                   cookingTime: metrics.remainingTime)
+    self.ingredientsMetricsView.configure(like: metrics.numberOfLikes,
+                                time: metrics.remainingTime)
     ingredientsMetricsView.translatesAutoresizingMaskIntoConstraints = false
     addSubview(ingredientsMetricsView)
     
@@ -60,6 +65,16 @@ class IngredientDetailCell: UITableViewCell {
       ingredientsMetricsView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
       ingredientsMetricsView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.25)
     ])
+  }
+  
+  private func makeAccessibleWith(recipe: Recipe){
+    self.labelIngredientName.isAccessibilityElement = true
+    self.labelIngredientName.accessibilityLabel = "The name of this recipe is \(recipe.title)"
+    self.labelIngredientDetail.isAccessibilityElement = true
+    self.labelIngredientDetail.accessibilityLabel = "the ingredients are \(recipe.ingredients.map(\.descriptions).joined(separator: " "))"
+    self.imageViewRecipe.isAccessibilityElement = true
+    self.imageViewRecipe.accessibilityTraits = .image
+    self.imageViewRecipe.accessibilityLabel = "An image of the recipe in the background"
   }
   
   private func downloadImageWith(urlPath: String){

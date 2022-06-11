@@ -24,8 +24,26 @@ class RecipesDetailViewController: UIViewController {
     tableView.delegate = self
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "recipes detail")
     tableView.register(RecipeHeaderTableViewCell.self, forCellReuseIdentifier: "recipe header cell")
+    setupNavigationItems()
+  }
+  
+  private func setupNavigationItems(){
     navigationItem.title = "Your recipe"
+    let leftBarButton = UIButton(type: .system)
+    leftBarButton.setTitle("Results", for: .normal)
+    leftBarButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+    leftBarButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+    leftBarButton.sizeToFit()
+    
+    leftBarButton.accessibilityLabel = "Return to the list of recipes"
+    leftBarButton.accessibilityTraits = .button
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
     setUpFavoritesIcon()
+  }
+  
+  @objc
+  private func didTapBackButton(){
+    navigationController?.popViewController(animated: true)
   }
   
   private func setUpFavoritesIcon(){
@@ -33,6 +51,8 @@ class RecipesDetailViewController: UIViewController {
                                               style: .plain,
                                               target: self,
                                               action: #selector(didTapOnFavoritesNavBarItem))
+    self.favoritesNavBarItem?.accessibilityLabel = "Add the current recipe to your favourite list"
+    self.favoritesNavBarItem?.accessibilityTraits = .button
     navigationItem.rightBarButtonItem = self.favoritesNavBarItem
     self.favoritesNavBarItem?.tintColor = isUserFavorite ? .yellow : .gray
   }

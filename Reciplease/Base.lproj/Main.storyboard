@@ -20,21 +20,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTr-qE-Me8">
                                 <rect key="frame" x="0.0" y="88" width="414" height="155"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7hP-8T-KJQ">
-                                        <rect key="frame" x="20" y="104" width="374" height="31"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7hP-8T-KJQ">
+                                        <rect key="frame" x="20" y="91" width="374" height="44"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tomatoes, onion, egg..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-o4-bEs">
-                                                <rect key="frame" x="0.0" y="0.0" width="283" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tomatoes, onion, egg..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-o4-bEs">
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="44"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" smartDashesType="yes" textContentType="name"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b3-s5-Rfh">
-                                                <rect key="frame" x="291" y="0.0" width="83" height="31"/>
+                                                <rect key="frame" x="291" y="0.0" width="83" height="44"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Xk4-km-Z3n"/>
+                                                </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Add"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="st" title="Add">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
@@ -47,17 +50,22 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="iWZ-o4-bEs" firstAttribute="height" secondItem="1b3-s5-Rfh" secondAttribute="height" id="JuK-IV-On5"/>
+                                        </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hvJ-QQ-MoG">
-                                        <rect key="frame" x="56" y="20" width="302.5" height="35"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvJ-QQ-MoG">
+                                        <rect key="frame" x="58.5" y="20" width="297.5" height="37"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1b3-s5-Rfh" firstAttribute="height" secondItem="qTr-qE-Me8" secondAttribute="height" multiplier="0.2" id="5ji-R4-3LB"/>
                                     <constraint firstAttribute="trailing" secondItem="7hP-8T-KJQ" secondAttribute="trailing" constant="20" id="EUh-5X-wFD"/>
                                     <constraint firstItem="7hP-8T-KJQ" firstAttribute="leading" secondItem="qTr-qE-Me8" secondAttribute="leading" constant="20" id="HBH-7t-hmw"/>
                                     <constraint firstItem="1b3-s5-Rfh" firstAttribute="width" secondItem="qTr-qE-Me8" secondAttribute="width" multiplier="0.2" id="i1w-AM-v6V"/>
@@ -68,21 +76,21 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ded-Cz-nWJ">
-                                <rect key="frame" x="10" y="263" width="394" height="31"/>
+                                <rect key="frame" x="10" y="263" width="394" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hZ-hh-V5Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="31"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hZ-hh-V5Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="44"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNV-mD-f13">
-                                        <rect key="frame" x="311" y="0.0" width="83" height="31"/>
+                                        <rect key="frame" x="311" y="0.0" width="83" height="44"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Clear">
-                                            <fontDescription key="titleFontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="16"/>
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -96,7 +104,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hfI-oM-gAG">
-                                <rect key="frame" x="0.0" y="314" width="414" height="461"/>
+                                <rect key="frame" x="0.0" y="327" width="414" height="444"/>
                                 <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -122,11 +130,11 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvy-j0-V2c">
-                                <rect key="frame" x="30" y="795" width="354" height="47"/>
+                                <rect key="frame" x="30" y="791" width="354" height="51"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search for recipes">
-                                    <fontDescription key="titleFontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -152,16 +160,19 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ded-Cz-nWJ" secondAttribute="trailing" constant="10" id="PIg-0c-wpK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTr-qE-Me8" secondAttribute="trailing" id="PqP-Cs-wSp"/>
                             <constraint firstItem="Mvy-j0-V2c" firstAttribute="top" secondItem="hfI-oM-gAG" secondAttribute="bottom" constant="20" id="Qga-5X-0cP"/>
+                            <constraint firstItem="oNV-mD-f13" firstAttribute="width" secondItem="1b3-s5-Rfh" secondAttribute="width" id="Tgk-LS-AlD"/>
                             <constraint firstItem="oNV-mD-f13" firstAttribute="height" secondItem="1b3-s5-Rfh" secondAttribute="height" id="YbJ-lA-oeG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mvy-j0-V2c" secondAttribute="trailing" constant="30" id="fgU-X4-0bE"/>
                             <constraint firstItem="ded-Cz-nWJ" firstAttribute="top" secondItem="qTr-qE-Me8" secondAttribute="bottom" constant="20" id="j1y-mo-ZEF"/>
                             <constraint firstItem="qTr-qE-Me8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nJs-Cw-XVT"/>
-                            <constraint firstItem="oNV-mD-f13" firstAttribute="width" secondItem="1b3-s5-Rfh" secondAttribute="width" id="ogq-m6-0i8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mvy-j0-V2c" secondAttribute="bottom" constant="20" id="v1e-Nu-SkO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="lkx-xj-q9o"/>
                     <connections>
+                        <outlet property="buttonAdd" destination="1b3-s5-Rfh" id="kW1-jg-mVk"/>
+                        <outlet property="buttonClear" destination="oNV-mD-f13" id="zoX-GD-d1y"/>
+                        <outlet property="searchButton" destination="Mvy-j0-V2c" id="v9b-Ac-u7Y"/>
                         <outlet property="tableViewIngredients" destination="hfI-oM-gAG" id="IqV-Ef-aDu"/>
                         <outlet property="textFieldUserIngredients" destination="iWZ-o4-bEs" id="fOU-LL-gAj"/>
                     </connections>
@@ -377,6 +388,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="np4-ZQ-7UU">
                                 <rect key="frame" x="40" y="800.5" width="334" height="41.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <accessibility key="accessibilityConfiguration" label="Navigate to the recipe web page."/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get directions">
                                     <fontDescription key="titleFontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
@@ -434,7 +446,6 @@
     </scenes>
     <resources>
         <image name="burger" width="960" height="592"/>
-        <image name="st" width="128" height="128"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

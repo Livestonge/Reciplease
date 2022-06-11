@@ -13,8 +13,29 @@ class IngredientsListTableViewController: UITableViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-      navigationItem.title = "Results"
+        setUpNavigationButton()
     }
+//   MARK: - Navigation
+  private func setUpNavigationButton(){
+    navigationItem.title = "Results"
+    
+    let leftBarButton = UIButton(type: .system)
+    leftBarButton.frame = .init(origin: .zero, size: CGSize(width: 44,
+                                                            height: 44))
+    leftBarButton.setTitle("Recplease", for: .normal)
+    leftBarButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+    leftBarButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+//    leftBarButton.sizeToFit()
+
+    leftBarButton.accessibilityLabel = "Return to Reciplease page"
+    leftBarButton.accessibilityTraits = .button
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
+  }
+  
+  @objc
+  private func didTapBackButton(){
+    navigationController?.popViewController(animated: true)
+  }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

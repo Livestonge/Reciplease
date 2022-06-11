@@ -11,7 +11,9 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var textFieldUserIngredients: UITextField!
   @IBOutlet weak var tableViewIngredients: UITableView!
-  
+  @IBOutlet weak var buttonAdd: UIButton!
+  @IBOutlet weak var buttonClear: UIButton!
+  @IBOutlet weak var searchButton: UIButton!
   
   var ingredients: [String] = []
   var recipesProvider: RecipesProviderDelegate!
@@ -22,6 +24,7 @@ class ViewController: UIViewController {
     recipesProvider = RecipesProviding()
     textFieldUserIngredients.keyboardType = .asciiCapable
     textFieldUserIngredients.becomeFirstResponder()
+    applyAccessiblity()
     
     tableViewIngredients.register(UITableViewCell.self, forCellReuseIdentifier: "Ingredient cell")
     tableViewIngredients.delegate = self
@@ -67,6 +70,19 @@ class ViewController: UIViewController {
       }
     }
   }
+  
+  func applyAccessiblity(){
+    self.textFieldUserIngredients.accessibilityLabel = "Please write here your ingredients"
+    self.textFieldUserIngredients.isAccessibilityElement = true
+    self.textFieldUserIngredients.font = .preferredFont(forTextStyle: .body)
+    self.textFieldUserIngredients.adjustsFontForContentSizeCategory = true
+    
+    self.buttonAdd.accessibilityLabel = "Validate your ingredients"
+    self.buttonAdd.accessibilityTraits = .button
+    self.buttonClear.accessibilityLabel = "Delete all"
+    self.buttonClear.accessibilityTraits = .button
+    self.searchButton.accessibilityLabel = "Make a search"
+  }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
@@ -87,7 +103,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     let ingredient = ingredients[indexPath.row]
     let markerFelt = UIFont(name: "Marker felt", size: 20)
     let attributedText = NSAttributedString(string: "- \(ingredient.capitalized)",
-                                        attributes: [.foregroundColor: UIColor.white, .font: markerFelt!])
+                                        attributes: [.foregroundColor: UIColor.white,
+                                                     .font: UIFont.preferredFont(forTextStyle: .body)])
+    
+    content.textProperties.adjustsFontForContentSizeCategory = true
     content.attributedText = attributedText
     cell.contentConfiguration = content
     cell.contentView.backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)

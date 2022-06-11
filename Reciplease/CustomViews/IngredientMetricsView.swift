@@ -39,9 +39,20 @@ import UIKit
   }
   
   func configure(like: String, time: String){
+    self.labelLike.font = .preferredFont(forTextStyle: .callout)
     self.labelLike.text = like + " pers"
+    self.labelTime.font = .preferredFont(forTextStyle: .callout)
     self.labelTime.text = time + " min"
   }
  
+  func makeAccessibleWith(likes: String? = "0", cookingTime: String? = "0"){
+    self.labelLike.isAccessibilityElement = true
+    self.labelLike.accessibilityTraits = .staticText
+    self.labelLike.accessibilityLabel = "has \(likes!) likes"
+    
+    self.labelTime.isAccessibilityElement = true
+    self.labelTime.accessibilityTraits = .staticText
+    self.labelTime.accessibilityLabel = "takes \(cookingTime!) minutes to prepare"
+  }
   
 }

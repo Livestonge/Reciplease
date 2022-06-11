@@ -68,6 +68,7 @@ extension LoadableView{
   }
   
   func configureWith(recipe: Recipe){
+    self.makeAccessible(recipe: recipe)
     self.labelRecipesTitle.text = recipe.title
     self.ingredientMetricRecipes.configure(like: recipe.metrics.numberOfLikes,
                                            time: recipe.metrics.remainingTime)
@@ -80,6 +81,17 @@ extension LoadableView{
         self.imageViewRecipes.image = uiImage
       }
     }
+  }
+  
+  private func makeAccessible(recipe: Recipe){
+    self.imageViewRecipes.isAccessibilityElement = true
+    self.imageViewRecipes.accessibilityTraits = .image
+    self.imageViewRecipes.accessibilityLabel = "Image of the recipe in the background."
+    self.labelRecipesTitle.isAccessibilityElement = true
+    self.labelRecipesTitle.accessibilityLabel = "the recipe's name is \(recipe.title)"
+    self.labelRecipesTitle.accessibilityTraits = .none
+    self.ingredientMetricRecipes.makeAccessibleWith(likes: recipe.metrics.numberOfLikes,
+                                                    cookingTime: recipe.metrics.remainingTime)
   }
   
 }
