@@ -10,6 +10,7 @@ import UIKit
 class RecipesDetailViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var getDirectionButton: UIButton!
   var recipe: Recipe?
   private var favoritesNavBarItem: UIBarButtonItem?
   
@@ -24,16 +25,22 @@ class RecipesDetailViewController: UIViewController {
     tableView.delegate = self
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "recipes detail")
     tableView.register(RecipeHeaderTableViewCell.self, forCellReuseIdentifier: "recipe header cell")
+    let markerFelt = UIFont(name: "Marker felt", size: 24)!
+    getDirectionButton.titleLabel?.font = UIFontMetrics(forTextStyle: .title2).scaledFont(for: markerFelt)
+    getDirectionButton.titleLabel?.adjustsFontSizeToFitWidth = true
+    getDirectionButton.setNeedsDisplay()
     setupNavigationItems()
   }
   
   private func setupNavigationItems(){
     navigationItem.title = "Your recipe"
     let leftBarButton = UIButton(type: .system)
+    leftBarButton.frame = .init(origin: .zero, size: CGSize(width: 44,
+                                                            height: 44))
     leftBarButton.setTitle("Results", for: .normal)
     leftBarButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
     leftBarButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-    leftBarButton.sizeToFit()
+//    leftBarButton.sizeToFit()
     
     leftBarButton.accessibilityLabel = "Return to the list of recipes"
     leftBarButton.accessibilityTraits = .button
@@ -121,8 +128,10 @@ extension RecipesDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     let ingredient = recipe?.ingredients[indexPath.row].descriptions ?? ""
     let markerFelt = UIFont(name: "Marker felt", size: 18)
+    let font = UIFontMetrics(forTextStyle: .body).scaledFont(for: markerFelt!)
     let attributedText = NSAttributedString(string: "- \(ingredient.capitalized)",
-                                        attributes: [.foregroundColor: UIColor.white, .font: markerFelt!])
+                                        attributes: [.foregroundColor: UIColor.white,
+                                                     .font: font])
     content.attributedText = attributedText
     content.textProperties.numberOfLines = 2
     cell.contentConfiguration = content

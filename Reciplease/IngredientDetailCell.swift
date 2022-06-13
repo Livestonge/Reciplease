@@ -44,7 +44,9 @@ class IngredientDetailCell: UITableViewCell {
     makeAccessibleWith(recipe: recipe)
     
     downloadImageWith(urlPath: recipe.urlImage)
-    self.labelIngredientName.font = .preferredFont(forTextStyle: .title2)
+    let markerFelt = UIFont(name: "Marker felt", size: 22)!
+    self.labelIngredientName.font = UIFontMetrics(forTextStyle: .title2).scaledFont(for: markerFelt)
+//    self.labelIngredientName.adjustsFontSizeToFitWidth = true
     self.labelIngredientName.text = recipe.title
     self.labelIngredientDetail.font = .preferredFont(forTextStyle: .body)
     self.labelIngredientDetail.text = recipe.ingredients.map(\.food).joined(separator: ",")

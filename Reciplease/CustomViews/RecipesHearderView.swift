@@ -69,6 +69,9 @@ extension LoadableView{
   
   func configureWith(recipe: Recipe){
     self.makeAccessible(recipe: recipe)
+    let markerFelt = UIFont(name: "Marker felt", size: 26)!
+    self.labelRecipesTitle.font = UIFontMetrics(forTextStyle: .title2).scaledFont(for: markerFelt)
+    self.labelRecipesTitle.adjustsFontSizeToFitWidth = true
     self.labelRecipesTitle.text = recipe.title
     self.ingredientMetricRecipes.configure(like: recipe.metrics.numberOfLikes,
                                            time: recipe.metrics.remainingTime)

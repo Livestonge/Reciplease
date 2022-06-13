@@ -45,6 +45,9 @@ class TabBarViewController: UITabBarController {
     let favoriteRecipeVC = storybard.instantiateViewController(withIdentifier: "FavoritesRecipesTableViewController") as? FavoritesRecipesTableViewController else { return }
     
     let navVCTabBarItem = UITabBarItem()
+    navVCTabBarItem.isAccessibilityElement = true
+    navVCTabBarItem.accessibilityLabel = "Visit the search recipes pages"
+    navVCTabBarItem.accessibilityTraits = .button
     navVCTabBarItem.title = "Search"
     navigationVC.tabBarItem = navVCTabBarItem
     
@@ -52,6 +55,9 @@ class TabBarViewController: UITabBarController {
     favoriteRecipeVC.savedRecipeProvider = StoredDataManager()
     ingredientListNavVC.viewControllers = [favoriteRecipeVC]
     let ingredientListVCTabBarItem = UITabBarItem()
+    ingredientListVCTabBarItem.isAccessibilityElement = true
+    ingredientListVCTabBarItem.accessibilityLabel = "Visit the favorite recipes page"
+    ingredientListVCTabBarItem.accessibilityTraits = .button
     ingredientListVCTabBarItem.title = "Favorites"
     ingredientListNavVC.tabBarItem = ingredientListVCTabBarItem
     

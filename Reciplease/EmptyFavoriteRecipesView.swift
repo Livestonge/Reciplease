@@ -22,7 +22,7 @@ class EmptyFavoriteRecipesView: UIView, LoadableView{
     commonInit()
   }
   
-  func commonInit(){
+  private func commonInit(){
    let view = loadViewWith(nibName: "Empty favorites recipes view", for: self)
     let image = UIImage(named: "empty_favorite_recipes")?.withRenderingMode(.alwaysTemplate)
     imageViewEmptyImage.image = image
@@ -30,6 +30,12 @@ class EmptyFavoriteRecipesView: UIView, LoadableView{
     view.frame = self.bounds
     addSubview(view)
     view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    makeAccessible()
   }
   
+  private func makeAccessible(){
+    self.imageViewEmptyImage.isAccessibilityElement = true
+    self.imageViewEmptyImage.accessibilityLabel = "Image of a empty cook book"
+    self.imageViewEmptyImage.accessibilityTraits = .image
+  }
 }
