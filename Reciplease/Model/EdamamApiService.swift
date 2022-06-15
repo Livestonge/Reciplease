@@ -10,6 +10,12 @@ import Alamofire
 
 class EdamamRestAPIService{
   
+  private let session: Session
+  
+  init(sessionConfig: URLSessionConfiguration = .af.default){
+    self.session = Session(configuration: sessionConfig)
+    
+  }
   
   lazy private var url: URL = {
     var component = URLComponents()
@@ -27,27 +33,23 @@ class EdamamRestAPIService{
   
   func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) -> Void) {
     
-    self.params["q"] = ingredients.joined(separator: " ")
+    let (url, params) = getSourceInfo(forIngredients: ingredients)
     
-    Alamofire.request(url, parameters: params)
-             .validate()
-             .response(queue: .main){ responseData in
-               if let data = responseData.data {
-                 let recipes = try? JSONDecoder().decode(Recipes.self, from: data)
-                   completion(recipes?.recipes ?? [])
-                     return
-               }
-               completion([])
+    session.request(url, parameters: params)
+           .validate()
+           .response(queue: .main){ responseData in
+             if let data = responseData.data {
+               let recipes = try? JSONDecoder().decode(Recipes.self, from: data)
+                 completion(recipes?.recipes ?? [])
+                  return
              }
+             completion([])
+           }
   }
-}
-
-
-class MockEdamApiService: EdamamRestAPIService{
   
-  override func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) -> Void) {
-    
-    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
-    completion(recipes?.recipes ?? [])
+  func getSourceInfo(forIngredients ingredients: [String]) -> (URL, [String: String]){
+    self.params["q"] = ingredients.joined(separator: " ")
+    return (self.url, self.params)
   }
 }
+

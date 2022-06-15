@@ -92,4 +92,8 @@ class IngredientDetailCell: UITableViewCell {
     }
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+  }
+  
 }

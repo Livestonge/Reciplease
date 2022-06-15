@@ -34,6 +34,7 @@
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		09A557D9280C55520012077B /* TestEdamamApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A557D8280C55520012077B /* TestEdamamApiService.swift */; };
 		09A557DB280C69870012077B /* TestStoredDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A557DA280C69870012077B /* TestStoredDataManager.swift */; };
+		09C85EAA2858ED72003D9030 /* Mocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C85EA92858ED72003D9030 /* Mocking.swift */; };
 		09CE6F3527F85CCE00685ADB /* FavoritesRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */; };
 		09CE6F3727F86B7E00685ADB /* Empty favorites recipes view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */; };
 		09CE6F3927F876B300685ADB /* EmptyFavoriteRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE6F3827F876B300685ADB /* EmptyFavoriteRecipesView.swift */; };
@@ -94,6 +95,7 @@
 		0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		09A557D8280C55520012077B /* TestEdamamApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEdamamApiService.swift; sourceTree = "<group>"; };
 		09A557DA280C69870012077B /* TestStoredDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoredDataManager.swift; sourceTree = "<group>"; };
+		09C85EA92858ED72003D9030 /* Mocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocking.swift; sourceTree = "<group>"; };
 		09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecipesTableViewController.swift; sourceTree = "<group>"; };
 		09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Empty favorites recipes view.xib"; sourceTree = "<group>"; };
 		09CE6F3827F876B300685ADB /* EmptyFavoriteRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFavoriteRecipesView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				0989536D28047EDD00E69303 /* Model persistence */,
 				09D65C8627E0A17600B788F6 /* Delegate.swift */,
 				0999FCA927E9DE51000DE4A4 /* EdamamApiService.swift */,
+				09C85EA92858ED72003D9030 /* Mocking.swift */,
 				09D89629281074400067140F /* ApiKey.swift */,
 				09730A3727E7952F00059834 /* JsonData.swift */,
 				0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */,
@@ -460,6 +463,7 @@
 				098953682804624800E69303 /* CoreDataStack.swift in Sources */,
 				0999FCAA27E9DE51000DE4A4 /* EdamamApiService.swift in Sources */,
 				09D65C8727E0A17600B788F6 /* Delegate.swift in Sources */,
+				09C85EAA2858ED72003D9030 /* Mocking.swift in Sources */,
 				0989536F28047F6E00E69303 /* Helper.swift in Sources */,
 				098187EB27DF4F23005DDC93 /* RecipesHearderView.swift in Sources */,
 				098187ED27DF5A42005DDC93 /* RecipesDetailViewController.swift in Sources */,
