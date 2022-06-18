@@ -52,7 +52,6 @@ class TabBarViewController: UITabBarController {
     navigationVC.tabBarItem = navVCTabBarItem
     
     let ingredientListNavVC = UINavigationController()
-    favoriteRecipeVC.savedRecipeProvider = StoredDataManager()
     ingredientListNavVC.viewControllers = [favoriteRecipeVC]
     let ingredientListVCTabBarItem = UITabBarItem()
     ingredientListVCTabBarItem.isAccessibilityElement = true

@@ -64,14 +64,6 @@ class StoredDataManager: SavedRecipeProvider {
     
   }
   
-  func clearDataBase(){
-    getStoredRecipes{recipes in
-      recipes.forEach{
-        self.delete($0)
-      }
-    }
-  }
-  
   private func delete(_ recipe: Recipe){
     
     let request: NSFetchRequest<StoredRecipe> = StoredRecipe.fetchRequest()

@@ -10,7 +10,7 @@ import CoreData
 
 
 class StoredRecipe: NSManagedObject {
-  
+
   func mapToRecipe() -> Recipe{
     Recipe(title: title ?? "",
            urlImage: urlImage ?? "",
@@ -23,7 +23,7 @@ class StoredRecipe: NSManagedObject {
 }
 
 class StoredIngredient: NSManagedObject{
-  
+
   func mapToIngredient() -> Ingredient{
     Ingredient(food: food ?? "",
                descriptions: descriptions ?? "")
@@ -31,7 +31,7 @@ class StoredIngredient: NSManagedObject{
 }
 
 class StoredMetric: NSManagedObject{
-  
+
   func mapToMetrics() -> Metrics{
     Metrics(numberOfLikes: numberOfLikes ?? "",
             remainingTime: remainingTime ?? "")

@@ -22,10 +22,35 @@ class CoreDataStack{
     }
     return container
   }()
-  private init(){}
+  
+  fileprivate init(){}
   
   var viewContext: NSManagedObjectContext{
     return container.viewContext
+  }
+  
+}
+
+class MockCoreData: CoreDataStack{
+  private let testContainer: NSPersistentContainer
+  
+  override init(){
+    let store = NSPersistentStoreDescription()
+    store.type = NSInMemoryStoreType
+    let container = NSPersistentContainer(name: "Reciplease")
+    container.persistentStoreDescriptions = [store]
+    container.loadPersistentStores{ storeDescription, error in
+      if let nsError = error as? NSError{
+        fatalError("Failed to load container \(nsError.localizedDescription)")
+      }
+    }
+    testContainer = container
+    super.init()
+    
+  }
+  
+  override var viewContext: NSManagedObjectContext{
+    return testContainer.viewContext
   }
   
 }

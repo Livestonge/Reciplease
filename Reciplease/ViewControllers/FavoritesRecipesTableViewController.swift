@@ -13,9 +13,10 @@ class FavoritesRecipesTableViewController: UITableViewController {
   var savedRecipeProvider: SavedRecipeProvider!
   
   private var emptyView: EmptyFavoriteRecipesView?
-    override func viewDidLoad() {
+  override func viewDidLoad() {
         super.viewDidLoad()
       navigationItem.title = "Results"
+      savedRecipeProvider = StoredDataManager()
       
     }
     

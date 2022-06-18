@@ -6,22 +6,30 @@
 //
 
 import XCTest
+import CoreData
 @testable import Reciplease
 
 class TestStoredDataManager: XCTestCase {
-    var sut: StoredDataManager!
+  
+  var sut: StoredDataManager!
+  var context: NSManagedObjectContext!
+  
     override func setUpWithError() throws {
-      self.sut = StoredDataManager()
+      self.context = TestContainer().viewContext
+      self.sut = StoredDataManager(context: self.context)
       try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
       try super.tearDownWithError()
-      self.sut.clearDataBase()
       self.sut = nil
+      self.context.reset()
+      self.context = nil
     }
   
-  func testSavingRecipe() throws{
+  func testSavingRecipe(){
+    let expectation = XCTestExpectation(description: "Save recipes")
+    var storedRecipes: [Recipe] = []
     var recipe = Recipe(title: "Fish and Fries",
                         urlImage: "",
                         ingredients: [Ingredient(food: "fish", descriptions: "fish"),
@@ -30,15 +38,17 @@ class TestStoredDataManager: XCTestCase {
                         metrics: Metrics(numberOfLikes: "10",
                                          remainingTime: "10"))
     recipe.isUserFavorite = true
-    sut.clearDataBase()
     NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
     sut.getStoredRecipes{ recipes in
-      XCTAssertEqual(recipes.count, 1)
-      XCTAssertEqual(recipes.first?.title, "Fish and Fries")
+      storedRecipes = recipes
+      expectation.fulfill()
     }
+    wait(for: [expectation], timeout: 2)
+    XCTAssertEqual(storedRecipes.count, 1)
+    XCTAssertEqual(storedRecipes.first?.title, "Fish and Fries")
   }
   
-  func testResetDatabase() throws{
+  func testDeleteRecipeFromDatabase() throws{
     var recipe = Recipe(title: "Fish and Fries",
                         urlImage: "",
                         ingredients: [Ingredient(food: "fish", descriptions: "fish"),
@@ -48,50 +58,51 @@ class TestStoredDataManager: XCTestCase {
                                          remainingTime: "10"))
     recipe.isUserFavorite = true
     NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
-    sut.clearDataBase()
+    recipe.isUserFavorite = false
+    NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
     sut.getStoredRecipes{ recipes in
       XCTAssertTrue(recipes.isEmpty)
     }
   }
   
-  func testMappingToMetrics() throws{
-    let nwSut = StoredMetric(context: CoreDataStack.shared.viewContext)
-    nwSut.setValue("10", forKey: "numberOfLikes")
-    nwSut.setValue("15", forKey: "remainingTime")
+  func testMappingToMetrics() {
+    let storedMetric = StoredMetric(context: context)
+    storedMetric.setValue("10", forKey: "numberOfLikes")
+    storedMetric.setValue("15", forKey: "remainingTime")
     
-    let metrics: Metrics = nwSut.mapToMetrics()
+    let metrics: Metrics = storedMetric.mapToMetrics()
     
     XCTAssertEqual(metrics.numberOfLikes, "10")
     XCTAssertEqual(metrics.remainingTime, "15")
   }
   
-  func testMappingToIngredient() throws{
-    let nwSut = StoredIngredient(context: CoreDataStack.shared.viewContext)
-    nwSut.descriptions = "Good ingredient"
-    nwSut.food = "fish"
+  func testMappingToIngredient() {
+    let storedIngredient = StoredIngredient(context: context)
+    storedIngredient.descriptions = "Good ingredient"
+    storedIngredient.food = "fish"
     
-    let ingredient: Ingredient = nwSut.mapToIngredient()
+    let ingredient: Ingredient = storedIngredient.mapToIngredient()
     
     XCTAssertEqual(ingredient.food, "fish")
     XCTAssertEqual(ingredient.descriptions, "Good ingredient")
   }
   
   func testMappingToRecipe() throws{
-    let nwSut = StoredRecipe(context: CoreDataStack.shared.viewContext)
-    nwSut.title = "Fish and fries"
-    nwSut.urlImage = ""
-    nwSut.sourcePath = ""
-    nwSut.isUserFavorite = true
-    let storedMetric = StoredMetric(context: CoreDataStack.shared.viewContext)
+    let storedRecipe = StoredRecipe(context: context)
+    storedRecipe.title = "Fish and fries"
+    storedRecipe.urlImage = ""
+    storedRecipe.sourcePath = ""
+    storedRecipe.isUserFavorite = true
+    let storedMetric = StoredMetric(context: context)
     storedMetric.setValue("10", forKey: "numberOfLikes")
     storedMetric.setValue("15", forKey: "remainingTime")
-    nwSut.metric = storedMetric
-    let storedIngredient = StoredIngredient(context: CoreDataStack.shared.viewContext)
+    storedRecipe.metric = storedMetric
+    let storedIngredient = StoredIngredient(context: context)
     storedIngredient.descriptions = "Good ingredient"
     storedIngredient.food = "fish"
-    nwSut.ingredients = Set([storedIngredient]) as NSSet
+    storedRecipe.ingredients = Set([storedIngredient]) as NSSet
     
-    let recipe: Recipe = nwSut.mapToRecipe()
+    let recipe: Recipe = storedRecipe.mapToRecipe()
     
     XCTAssertEqual(recipe.title, "Fish and fries")
     XCTAssertEqual(recipe.urlImage, "")

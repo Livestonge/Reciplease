@@ -34,6 +34,7 @@
 		099DBB1A27DE500F00A3E2F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBC27D7AD0800319728 /* Assets.xcassets */; };
 		09A557D9280C55520012077B /* TestEdamamApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A557D8280C55520012077B /* TestEdamamApiService.swift */; };
 		09A557DB280C69870012077B /* TestStoredDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A557DA280C69870012077B /* TestStoredDataManager.swift */; };
+		09B0CD02285DE09900FB0EAB /* TestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0CD01285DE09900FB0EAB /* TestContainer.swift */; };
 		09C85EAA2858ED72003D9030 /* Mocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C85EA92858ED72003D9030 /* Mocking.swift */; };
 		09CE6F3527F85CCE00685ADB /* FavoritesRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */; };
 		09CE6F3727F86B7E00685ADB /* Empty favorites recipes view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */; };
@@ -95,6 +96,7 @@
 		0999FCAB27E9E2B0000DE4A4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		09A557D8280C55520012077B /* TestEdamamApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEdamamApiService.swift; sourceTree = "<group>"; };
 		09A557DA280C69870012077B /* TestStoredDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoredDataManager.swift; sourceTree = "<group>"; };
+		09B0CD01285DE09900FB0EAB /* TestContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContainer.swift; sourceTree = "<group>"; };
 		09C85EA92858ED72003D9030 /* Mocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocking.swift; sourceTree = "<group>"; };
 		09CE6F3427F85CCE00685ADB /* FavoritesRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecipesTableViewController.swift; sourceTree = "<group>"; };
 		09CE6F3627F86B7E00685ADB /* Empty favorites recipes view.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Empty favorites recipes view.xib"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				091C3ECA27D7AD0800319728 /* RecipleaseTests.swift */,
 				09A557D8280C55520012077B /* TestEdamamApiService.swift */,
 				09A557DA280C69870012077B /* TestStoredDataManager.swift */,
+				09B0CD01285DE09900FB0EAB /* TestContainer.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				091C3ECB27D7AD0800319728 /* RecipleaseTests.swift in Sources */,
+				09B0CD02285DE09900FB0EAB /* TestContainer.swift in Sources */,
 				09A557DB280C69870012077B /* TestStoredDataManager.swift in Sources */,
 				09A557D9280C55520012077B /* TestEdamamApiService.swift in Sources */,
 			);
