@@ -14,8 +14,6 @@
 		091C3EBB27D7AD0700319728 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 091C3EB927D7AD0700319728 /* Reciplease.xcdatamodeld */; };
 		091C3EC027D7AD0800319728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091C3EBE27D7AD0800319728 /* LaunchScreen.storyboard */; };
 		091C3ECB27D7AD0800319728 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ECA27D7AD0800319728 /* RecipleaseTests.swift */; };
-		091C3ED527D7AD0800319728 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ED427D7AD0800319728 /* RecipleaseUITests.swift */; };
-		091C3ED727D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C3ED627D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift */; };
 		094442B127EE4BEA0020A453 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094442B027EE4BEA0020A453 /* TabBarViewController.swift */; };
 		0945271A27DCB572007A1DA6 /* IngredientDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */; };
 		0945271C27DCB78A007A1DA6 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */; };
@@ -77,8 +75,6 @@
 		091C3EC627D7AD0800319728 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		091C3ECA27D7AD0800319728 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		091C3ED027D7AD0800319728 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		091C3ED427D7AD0800319728 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
-		091C3ED627D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		094442B027EE4BEA0020A453 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0945271927DCB572007A1DA6 /* IngredientDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailCell.swift; sourceTree = "<group>"; };
 		0945271B27DCB78A007A1DA6 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +147,6 @@
 			children = (
 				091C3EAF27D7AD0700319728 /* Reciplease */,
 				091C3EC927D7AD0800319728 /* RecipleaseTests */,
-				091C3ED327D7AD0800319728 /* RecipleaseUITests */,
 				091C3EAE27D7AD0700319728 /* Products */,
 				021863E044F5082DEB815868 /* Pods */,
 				8A5BF4A660B4B76A26AF4AAC /* Frameworks */,
@@ -199,15 +194,6 @@
 				09B0CD01285DE09900FB0EAB /* TestContainer.swift */,
 			);
 			path = RecipleaseTests;
-			sourceTree = "<group>";
-		};
-		091C3ED327D7AD0800319728 /* RecipleaseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				091C3ED427D7AD0800319728 /* RecipleaseUITests.swift */,
-				091C3ED627D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift */,
-			);
-			path = RecipleaseUITests;
 			sourceTree = "<group>";
 		};
 		0989536D28047EDD00E69303 /* Model persistence */ = {
@@ -488,8 +474,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				091C3ED527D7AD0800319728 /* RecipleaseUITests.swift in Sources */,
-				091C3ED727D7AD0800319728 /* RecipleaseUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
