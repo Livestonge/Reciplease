@@ -11,7 +11,7 @@ import CoreData
 class StoredDataManager: SavedRecipeProvider {
   
   private let context: NSManagedObjectContext
-  typealias FavoritesRecipes = ([Recipe]) -> Void
+  var delegate: RecipesReceiverDelegate?
   
   init(context: NSManagedObjectContext = CoreDataStack.shared.viewContext){
     self.context = context
@@ -80,12 +80,12 @@ class StoredDataManager: SavedRecipeProvider {
     
   }
   
-  func getStoredRecipes(completion: @escaping FavoritesRecipes){
+  func getStoredRecipes(){
     let request: NSFetchRequest<StoredRecipe> = StoredRecipe.fetchRequest()
     do{
       let storedRecipes = try context.fetch(request)
       let recipes = storedRecipes.map{ $0.mapToRecipe() }
-      completion(recipes)
+      self.delegate?.didGetRecipes(recipes)
     }catch let error as NSError {
       fatalError("the following error \(error.localizedDescription) has occured when loading saved recipes")
     }

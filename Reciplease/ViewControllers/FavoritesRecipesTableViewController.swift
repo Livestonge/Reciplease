@@ -17,6 +17,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
         super.viewDidLoad()
       navigationItem.title = "Results"
       savedRecipeProvider = StoredDataManager()
+      savedRecipeProvider.delegate = self
       
     }
     
@@ -27,10 +28,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    savedRecipeProvider.getStoredRecipes{ [weak self] savedRecipes in
-      self?.recipes = savedRecipes
-      self?.tableView.reloadData()
-    }
+    savedRecipeProvider.getStoredRecipes()
     addEmptyView()
   }
   
@@ -68,4 +66,12 @@ class FavoritesRecipesTableViewController: UITableViewController {
     navigationController?.pushViewController(vc, animated: true)
   }
 
+}
+
+extension FavoritesRecipesTableViewController: RecipesReceiverDelegate{
+  
+  func didGetRecipes(_ recipes: [Recipe]) {
+    self.recipes = recipes
+    self.tableView.reloadData()
+  }
 }

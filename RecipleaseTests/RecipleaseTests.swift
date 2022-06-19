@@ -9,23 +9,26 @@ import XCTest
 @testable import Reciplease
 
 class RecipleaseTests: XCTestCase {
-  var sut: RecipesProviderDelegate!
+  var sut: RecipesProvider!
+  var recipes: [Recipe]!
   
     override func setUpWithError() throws {
       self.sut = RecipesProviding()
+      self.sut.delegate = self
+      self.recipes = []
       try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
       try super.tearDownWithError()
       self.sut = nil
+      self.recipes = nil
     }
   
   func testGetRecipes() throws {
     let ingredients = ["Tomatoes", "onion", "egg"]
-    sut.getRecipesFor(ingredients: ingredients){ recipes in
-      XCTAssertEqual(recipes[1].title , "Baked Egg Recipe")
-    }
+    sut.getRecipesFor(ingredients: ingredients)
+    XCTAssertEqual(recipes[1].title , "Baked Egg Recipe")
   }
   
   func testDownloadingImage() throws{
@@ -34,4 +37,10 @@ class RecipleaseTests: XCTestCase {
     }
   }
 
+}
+
+extension RecipleaseTests: RecipesReceiverDelegate{
+  func didGetRecipes(_ recipes: [Recipe]) {
+    self.recipes = recipes
+  }
 }

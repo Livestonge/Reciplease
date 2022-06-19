@@ -10,26 +10,28 @@ import CoreData
 @testable import Reciplease
 
 class TestStoredDataManager: XCTestCase {
-  
+
   var sut: StoredDataManager!
+  var storedRecipes: [Recipe]!
   var context: NSManagedObjectContext!
-  
+
     override func setUpWithError() throws {
       self.context = TestContainer().viewContext
       self.sut = StoredDataManager(context: self.context)
+      self.sut.delegate = self
+      self.storedRecipes = []
       try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
       try super.tearDownWithError()
       self.sut = nil
+      self.storedRecipes = nil
       self.context.reset()
       self.context = nil
     }
-  
+
   func testSavingRecipe(){
-    let expectation = XCTestExpectation(description: "Save recipes")
-    var storedRecipes: [Recipe] = []
     var recipe = Recipe(title: "Fish and Fries",
                         urlImage: "",
                         ingredients: [Ingredient(food: "fish", descriptions: "fish"),
@@ -39,15 +41,11 @@ class TestStoredDataManager: XCTestCase {
                                          remainingTime: "10"))
     recipe.isUserFavorite = true
     NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
-    sut.getStoredRecipes{ recipes in
-      storedRecipes = recipes
-      expectation.fulfill()
-    }
-    wait(for: [expectation], timeout: 2)
+    sut.getStoredRecipes()
     XCTAssertEqual(storedRecipes.count, 1)
     XCTAssertEqual(storedRecipes.first?.title, "Fish and Fries")
   }
-  
+
   func testDeleteRecipeFromDatabase() throws{
     var recipe = Recipe(title: "Fish and Fries",
                         urlImage: "",
@@ -60,33 +58,32 @@ class TestStoredDataManager: XCTestCase {
     NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
     recipe.isUserFavorite = false
     NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
-    sut.getStoredRecipes{ recipes in
-      XCTAssertTrue(recipes.isEmpty)
-    }
+    sut.getStoredRecipes()
+    XCTAssertTrue(storedRecipes.isEmpty)
   }
-  
+
   func testMappingToMetrics() {
     let storedMetric = StoredMetric(context: context)
     storedMetric.setValue("10", forKey: "numberOfLikes")
     storedMetric.setValue("15", forKey: "remainingTime")
-    
+
     let metrics: Metrics = storedMetric.mapToMetrics()
-    
+
     XCTAssertEqual(metrics.numberOfLikes, "10")
     XCTAssertEqual(metrics.remainingTime, "15")
   }
-  
+
   func testMappingToIngredient() {
     let storedIngredient = StoredIngredient(context: context)
     storedIngredient.descriptions = "Good ingredient"
     storedIngredient.food = "fish"
-    
+
     let ingredient: Ingredient = storedIngredient.mapToIngredient()
-    
+
     XCTAssertEqual(ingredient.food, "fish")
     XCTAssertEqual(ingredient.descriptions, "Good ingredient")
   }
-  
+
   func testMappingToRecipe() throws{
     let storedRecipe = StoredRecipe(context: context)
     storedRecipe.title = "Fish and fries"
@@ -101,9 +98,9 @@ class TestStoredDataManager: XCTestCase {
     storedIngredient.descriptions = "Good ingredient"
     storedIngredient.food = "fish"
     storedRecipe.ingredients = Set([storedIngredient]) as NSSet
-    
+
     let recipe: Recipe = storedRecipe.mapToRecipe()
-    
+
     XCTAssertEqual(recipe.title, "Fish and fries")
     XCTAssertEqual(recipe.urlImage, "")
     XCTAssertEqual(recipe.isUserFavorite, true)
@@ -111,7 +108,15 @@ class TestStoredDataManager: XCTestCase {
     XCTAssertEqual(recipe.metrics.remainingTime, "15")
     XCTAssertEqual(recipe.metrics.numberOfLikes, "10")
     XCTAssertEqual(recipe.ingredients.count, 1)
-    
+
   }
 
+}
+
+extension TestStoredDataManager: RecipesReceiverDelegate{
+  func didGetRecipes(_ recipes: [Recipe]) {
+    self.storedRecipes = recipes
+  }
+  
+  
 }

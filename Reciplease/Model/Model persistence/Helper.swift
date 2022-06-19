@@ -7,8 +7,10 @@
 
 import Foundation
 
+
 protocol SavedRecipeProvider{
-  func getStoredRecipes(completion: @escaping ([Recipe]) -> Void)
+  var delegate: RecipesReceiverDelegate? {get set}
+  func getStoredRecipes()
 }
 
 extension Notification.Name{
