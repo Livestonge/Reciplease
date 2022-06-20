@@ -11,11 +11,13 @@ import XCTest
 class RecipleaseTests: XCTestCase {
   var sut: RecipesProvider!
   var recipes: [Recipe]!
+  var expectation: XCTestExpectation!
   
     override func setUpWithError() throws {
       self.sut = RecipesProviding()
       self.sut.delegate = self
       self.recipes = []
+      expectation = XCTestExpectation(description: "Reciplease test")
       try super.setUpWithError()
     }
 
@@ -23,11 +25,13 @@ class RecipleaseTests: XCTestCase {
       try super.tearDownWithError()
       self.sut = nil
       self.recipes = nil
+      self.expectation = nil
     }
   
   func testGetRecipes() throws {
     let ingredients = ["Tomatoes", "onion", "egg"]
     sut.getRecipesFor(ingredients: ingredients)
+    wait(for: [expectation], timeout: 2)
     XCTAssertEqual(recipes[1].title , "Baked Egg Recipe")
   }
   
@@ -42,5 +46,6 @@ class RecipleaseTests: XCTestCase {
 extension RecipleaseTests: RecipesReceiverDelegate{
   func didGetRecipes(_ recipes: [Recipe]) {
     self.recipes = recipes
+    self.expectation.fulfill()
   }
 }

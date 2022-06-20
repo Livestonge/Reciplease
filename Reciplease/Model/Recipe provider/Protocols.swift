@@ -26,8 +26,11 @@ class RecipesProviding: RecipesProvider {
 //    service.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
 //      self?.delegate?.didGetRecipes(recipes)
 //    }
-    let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
-    delegate?.didGetRecipes(recipes?.recipes ?? [])
+    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+      let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
+      self.delegate?.didGetRecipes(recipes?.recipes ?? [])
+    }
+    
 
   }
   

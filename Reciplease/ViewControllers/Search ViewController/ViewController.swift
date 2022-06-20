@@ -18,13 +18,30 @@ class ViewController: UIViewController {
   var ingredients: [String] = []
   var recipesProvider: RecipesProvider!
   var isLoading = false
+  var indicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     recipesProvider = RecipesProviding()
     recipesProvider.delegate = self
+    indicator = UIActivityIndicatorView(style: .medium)
+    indicator.center = view.center
+    indicator.isAccessibilityElement = true
+    indicator.accessibilityLabel = "Loading new page indicator"
+    view.addSubview(indicator)
     textFieldUserIngredients.keyboardType = .asciiCapable
     textFieldUserIngredients.becomeFirstResponder()
+    let toolBar = UIToolbar()
+    let okButton = UIBarButtonItem(title: "OK",
+                                   style: .plain,
+                                   target: self,
+                                   action: #selector(didTapCloseBt))
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                        target: self,
+                                        action: nil)
+    toolBar.items = [flexibleSpace,okButton]
+    toolBar.sizeToFit()
+    textFieldUserIngredients.inputAccessoryView = toolBar
     applyAccessiblity()
     
     tableViewIngredients.register(UITableViewCell.self, forCellReuseIdentifier: "Ingredient cell")
@@ -33,6 +50,11 @@ class ViewController: UIViewController {
 
     navigationItem.title = "Reciplease"
     
+  }
+  
+  @objc
+  func didTapCloseBt(){
+    textFieldUserIngredients.resignFirstResponder()
   }
   
   @IBAction
@@ -61,6 +83,7 @@ class ViewController: UIViewController {
   func didTapSearchButton(sender: UIButton){
     guard isLoading == false else { return }
     isLoading = true
+    indicator.startAnimating()
     recipesProvider.getRecipesFor(ingredients: ingredients)
   }
   

@@ -12,7 +12,3 @@ protocol SavedRecipeProvider{
   var delegate: RecipesReceiverDelegate? {get set}
   func getStoredRecipes()
 }
-
-extension Notification.Name{
-  static let updateRecipe: Notification.Name = .init("updateRecipe")
-}

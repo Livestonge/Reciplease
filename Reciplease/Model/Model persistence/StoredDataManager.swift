@@ -10,25 +10,15 @@ import CoreData
 
 class StoredDataManager: SavedRecipeProvider {
   
+  static var shared = StoredDataManager()
   private let context: NSManagedObjectContext
   var delegate: RecipesReceiverDelegate?
   
   init(context: NSManagedObjectContext = CoreDataStack.shared.viewContext){
     self.context = context
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(handle),
-                                           name: .updateRecipe,
-                                           object: nil)
   }
   
-  deinit{
-    NotificationCenter.default.removeObserver(self)
-  }
-  
-  @objc
-  func handle(_ notification: Notification){
-    guard let recipe = notification.userInfo?["recipe"] as? Recipe else { return }
-    
+  func updateRecipe(_ recipe: Recipe){
     if recipe.isUserFavorite{
       self.save(recipe)
     }else{
@@ -37,6 +27,7 @@ class StoredDataManager: SavedRecipeProvider {
   }
   
   private func save(_ recipe: Recipe){
+    guard recipe.isUserFavorite == true else { return }
     let storedRecipe = StoredRecipe(context: context)
 
     let storeIngredients = recipe.ingredients.map{ ingredient -> StoredIngredient in

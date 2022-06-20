@@ -48,6 +48,7 @@ extension ViewController: RecipesReceiverDelegate{
     DispatchQueue.main.async {
         vc.recipes = recipes
         self.isLoading = false
+      self.indicator.stopAnimating()
         self.navigationController?.pushViewController(vc, animated: true)
       }
   }

@@ -40,7 +40,7 @@ class TestStoredDataManager: XCTestCase {
                         metrics: Metrics(numberOfLikes: "10",
                                          remainingTime: "10"))
     recipe.isUserFavorite = true
-    NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
+    sut.updateRecipe(recipe)
     sut.getStoredRecipes()
     XCTAssertEqual(storedRecipes.count, 1)
     XCTAssertEqual(storedRecipes.first?.title, "Fish and Fries")
@@ -55,9 +55,9 @@ class TestStoredDataManager: XCTestCase {
                         metrics: Metrics(numberOfLikes: "10",
                                          remainingTime: "10"))
     recipe.isUserFavorite = true
-    NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
+    sut.updateRecipe(recipe)
     recipe.isUserFavorite = false
-    NotificationCenter.default.post(name: .updateRecipe, object: nil, userInfo: ["recipe": recipe])
+    sut.updateRecipe(recipe)
     sut.getStoredRecipes()
     XCTAssertTrue(storedRecipes.isEmpty)
   }

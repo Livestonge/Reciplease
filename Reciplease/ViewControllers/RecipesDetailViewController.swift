@@ -69,9 +69,7 @@ class RecipesDetailViewController: UIViewController {
     self.isUserFavorite.toggle()
     self.favoritesNavBarItem?.tintColor = isUserFavorite ? .yellow : .gray
     guard let recipe = self.recipe else { return }
-    NotificationCenter.default.post(name: .updateRecipe,
-                                    object: nil,
-                                    userInfo: ["recipe": recipe])
+    StoredDataManager.shared.updateRecipe(recipe)
    
   }
   
