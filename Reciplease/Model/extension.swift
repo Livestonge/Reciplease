@@ -19,3 +19,5 @@ extension String{
   }
   
 }
+
+extension URLSessionDownloadTask: Cancellable{}

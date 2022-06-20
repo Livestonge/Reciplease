@@ -32,7 +32,7 @@ class RecipleaseTests: XCTestCase {
   }
   
   func testDownloadingImage() throws{
-    ImageLoader.downloadImageFrom(url: URL(string: "www.vg.no")!){ image, url in
+    ImageLoaderService.downloadImageFrom(url: URL(string: "www.vg.no")!){ image in
       XCTAssertEqual(image, UIImage(named: "no_image_available")!)
     }
   }

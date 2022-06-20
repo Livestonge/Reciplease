@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 
-class ImageLoader{
+protocol Cancellable{
+  func cancel()
+}
+
+class ImageLoaderService{
   
-  static func downloadImageFrom(url: URL, completion: @escaping (UIImage, URL) -> Void) {
+  @discardableResult
+  static func downloadImageFrom(url: URL, completion: @escaping (UIImage) -> Void) -> Cancellable {
     
     var image = UIImage(named: "no_image_available")!
     
@@ -20,7 +25,7 @@ class ImageLoader{
             let data = try? Data(contentsOf: tempUrl)
       else {
         print("Failed to download image for \(url)")
-        completion(image, url)
+        completion(image)
         return
       }
       
@@ -28,8 +33,9 @@ class ImageLoader{
         image = downloadedImage
       }
       
-      completion(image, url)
+      completion(image)
     }
     task.resume()
+    return task
   }
 }
