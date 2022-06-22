@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
+// Protocol used to cancel a download task.
 protocol Cancellable{
   func cancel()
 }
-
+// Objects for downloading images
 class ImageLoaderService{
   
   @discardableResult

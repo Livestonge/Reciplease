@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let scene = (scene as? UIWindowScene), let window = scene.windows.first else { return }
     self.window = window
+//  Initiate a custom UITabviewController as the entry point for tha app.
     let tabBarVC = TabBarViewController()
     window.rootViewController = tabBarVC
   }

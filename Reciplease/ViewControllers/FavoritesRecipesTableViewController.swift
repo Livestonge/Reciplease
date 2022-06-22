@@ -8,8 +8,9 @@
 import UIKit
 
 class FavoritesRecipesTableViewController: UITableViewController {
-
+//  The recipes to populate the tableview with.
   var recipes: [Recipe]!
+//  Object in charge for providing recipes
   var savedRecipeProvider: SavedRecipeProvider!
   
   private var emptyView: EmptyFavoriteRecipesView?
@@ -17,6 +18,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
         super.viewDidLoad()
       navigationItem.title = "Results"
       savedRecipeProvider = StoredDataManager()
+    //  Used to handle feedback from the storedRecipeProvider object.
       savedRecipeProvider.delegate = self
       
     }
@@ -31,7 +33,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
     savedRecipeProvider.getStoredRecipes()
     addEmptyView()
   }
-  
+//  Custom empty view for when the store is empty.
   private func addEmptyView(){
     self.emptyView?.removeFromSuperview()
     guard recipes.isEmpty == true else { return }
@@ -60,6 +62,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
     }
   
  override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   //   When the user taps on a row then the recipeDetail controller is displayed with the appropriate recipe.
     let vc = storyboard?.instantiateViewController(withIdentifier: "RecipesDetailViewController") as! RecipesDetailViewController
     let recipe = recipes[indexPath.row]
     vc.recipe = recipe
@@ -69,7 +72,7 @@ class FavoritesRecipesTableViewController: UITableViewController {
 }
 
 extension FavoritesRecipesTableViewController: RecipesReceiverDelegate{
-  
+  // This function gets called when the StoredRecipeProvider objects receives stored recipes.
   func didGetRecipes(_ recipes: [Recipe]) {
     self.recipes = recipes
     self.tableView.reloadData()

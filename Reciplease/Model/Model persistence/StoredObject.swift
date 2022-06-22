@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-
+// Stored objects with respectif mapping function.
 class StoredRecipe: NSManagedObject {
 
   func mapToRecipe() -> Recipe{

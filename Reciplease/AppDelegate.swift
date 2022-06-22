@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       .foregroundColor: UIColor.white,
                       .font: UIFont(name: "Marker felt", size: 23)!
                       ]
+//  custom color
     let backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)
-    
+//  Initiate a custom appearance for navigation bar in the app.
     let navBarAppearance = UINavigationBarAppearance()
     navBarAppearance.backgroundColor = backgroundColor
     navBarAppearance.titleTextAttributes = attributes

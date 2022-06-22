@@ -16,9 +16,9 @@ protocol RecipesReceiverDelegate{
   func didGetRecipes(_ recipes: [Recipe])
 }
 
-
+// Objects implementing the RecipesProvider
 class RecipesProviding: RecipesProvider {
-  
+//  The REST service providing the recipes .
 //  private let service = EdamamRestAPIService()
   var delegate: RecipesReceiverDelegate?
   
@@ -26,10 +26,8 @@ class RecipesProviding: RecipesProvider {
 //    service.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
 //      self?.delegate?.didGetRecipes(recipes)
 //    }
-    DispatchQueue.main.asyncAfter(deadline: .now()+2){
       let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
       self.delegate?.didGetRecipes(recipes?.recipes ?? [])
-    }
     
 
   }

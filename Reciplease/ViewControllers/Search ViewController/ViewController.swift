@@ -16,19 +16,22 @@ class ViewController: UIViewController {
   @IBOutlet weak var searchButton: UIButton!
   
   var ingredients: [String] = []
+//  An object in charge for providing recipes
   var recipesProvider: RecipesProvider!
+//  Variable to track if a recipe fetch is in progress
   var isLoading = false
   var indicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     recipesProvider = RecipesProviding()
+//  Used to handle feedback from the recipeProvider object.
     recipesProvider.delegate = self
     indicator = UIActivityIndicatorView(style: .medium)
     indicator.center = view.center
-    indicator.isAccessibilityElement = true
-    indicator.accessibilityLabel = "Loading new page indicator"
+    indicator.backgroundColor = .green
     view.addSubview(indicator)
+//  Limit the characters in th keyboard.
     textFieldUserIngredients.keyboardType = .asciiCapable
     textFieldUserIngredients.becomeFirstResponder()
     let toolBar = UIToolbar()
@@ -42,6 +45,7 @@ class ViewController: UIViewController {
     toolBar.items = [flexibleSpace,okButton]
     toolBar.sizeToFit()
     textFieldUserIngredients.inputAccessoryView = toolBar
+//    Make the view accessible to voiceOver by setting attributes
     applyAccessiblity()
     
     tableViewIngredients.register(UITableViewCell.self, forCellReuseIdentifier: "Ingredient cell")
@@ -60,6 +64,7 @@ class ViewController: UIViewController {
   @IBAction
   func didTapAddButton(sender: UIButton){
     let text = textFieldUserIngredients.text!
+//    Reading user inputs.
     ingredients = text.components(separatedBy: ",")
                       .map{ $0.lowercased().trimFor(sets: [.punctuationCharacters,
                                                            .whitespacesAndNewlines,
@@ -81,6 +86,7 @@ class ViewController: UIViewController {
   
   @IBAction
   func didTapSearchButton(sender: UIButton){
+//    starts requesting recipes 
     guard isLoading == false else { return }
     isLoading = true
     indicator.startAnimating()
@@ -98,5 +104,8 @@ class ViewController: UIViewController {
     self.buttonClear.accessibilityLabel = "Delete all"
     self.buttonClear.accessibilityTraits = .button
     self.searchButton.accessibilityLabel = "Make a search"
+    
+    indicator.isAccessibilityElement = true
+    indicator.accessibilityLabel = "Loading new page indicator"
   }
 }

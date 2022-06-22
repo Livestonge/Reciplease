@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+//    Customize the appearance of the tabbar.
     let backgroundColor = UIColor(red: 0.16, green: 0.15686, blue: 0.16, alpha: 1)
     self.tabBar.backgroundColor = backgroundColor
     self.tabBar.barTintColor = backgroundColor
@@ -20,7 +21,7 @@ class TabBarViewController: UITabBarController {
     self.delegate = self
     
   }
-  
+//  Creates custom font.
   private lazy var attributes: [NSAttributedString.Key : Any] = {
     let attributes: [NSAttributedString.Key: Any] = [
                       .foregroundColor: UIColor.white,
@@ -33,13 +34,14 @@ class TabBarViewController: UITabBarController {
     didSet{
       guard let viewControllers = self.viewControllers else { return }
       for viewController in viewControllers{
+//        Applies the custom font to the items of the tabbar.
           viewController.tabBarItem.setTitleTextAttributes(self.attributes, for: .normal)
       }
     }
   }
   
   private func setUpChildViewcontrollers(){
-    
+//    Instantiates viewControllers and add to the tabbarViewController.
     let storybard = UIStoryboard(name: "Main",bundle: Bundle.main)
     guard let navigationVC = storybard.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController,
     let favoriteRecipeVC = storybard.instantiateViewController(withIdentifier: "FavoritesRecipesTableViewController") as? FavoritesRecipesTableViewController else { return }

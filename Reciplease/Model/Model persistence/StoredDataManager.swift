@@ -7,17 +7,18 @@
 
 import Foundation
 import CoreData
-
+// Object managing storing and retrieving stored recipes.
 class StoredDataManager: SavedRecipeProvider {
   
   static var shared = StoredDataManager()
   private let context: NSManagedObjectContext
+// Variable to communicate with receivers of recipes
   var delegate: RecipesReceiverDelegate?
   
   init(context: NSManagedObjectContext = CoreDataStack.shared.viewContext){
     self.context = context
   }
-  
+//  function to either save or delete a recipe.
   func updateRecipe(_ recipe: Recipe){
     if recipe.isUserFavorite{
       self.save(recipe)

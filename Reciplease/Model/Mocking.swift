@@ -8,6 +8,7 @@
 import Foundation
 import Mocker
 
+// Objects used during test.
 class MockData{
   
   static  var service: EdamamRestAPIService {

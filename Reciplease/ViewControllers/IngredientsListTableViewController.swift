@@ -8,7 +8,7 @@
 import UIKit
 
 class IngredientsListTableViewController: UITableViewController {
-  
+//  The recipes to populate the tableview with.
   var recipes: [Recipe]!
  
     override func viewDidLoad() {
@@ -56,6 +56,7 @@ class IngredientsListTableViewController: UITableViewController {
     }
   
  override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//   When the user taps on a row then the recipeDetail controller is displayed with the appropriate recipe.
     let vc = storyboard?.instantiateViewController(withIdentifier: "RecipesDetailViewController") as! RecipesDetailViewController
     let recipe = recipes[indexPath.row]
     vc.recipe = recipe

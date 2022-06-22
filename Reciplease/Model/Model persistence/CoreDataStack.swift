@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+// Main object for communicating with CoreData in the app
 class CoreDataStack{
   
   static let shared = CoreDataStack()
