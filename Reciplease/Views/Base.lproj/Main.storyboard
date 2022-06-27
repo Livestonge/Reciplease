@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTr-qE-Me8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="155"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="193.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7hP-8T-KJQ">
-                                        <rect key="frame" x="20" y="91" width="374" height="44"/>
+                                        <rect key="frame" x="20" y="129.5" width="374" height="44"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tomatoes, onion, egg..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-o4-bEs">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="44"/>
@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ded-Cz-nWJ">
-                                <rect key="frame" x="10" y="263" width="394" height="44"/>
+                                <rect key="frame" x="10" y="301.5" width="394" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hZ-hh-V5Y">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="44"/>
@@ -105,7 +105,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hfI-oM-gAG">
-                                <rect key="frame" x="0.0" y="327" width="414" height="444"/>
+                                <rect key="frame" x="0.0" y="365.5" width="414" height="405.5"/>
                                 <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -153,7 +153,7 @@
                         <color key="backgroundColor" red="0.16078431372549018" green="0.15686274509803921" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="hfI-oM-gAG" firstAttribute="top" secondItem="ded-Cz-nWJ" secondAttribute="bottom" constant="20" id="2tf-9G-lxF"/>
-                            <constraint firstItem="qTr-qE-Me8" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.2" id="5lM-G2-oNZ"/>
+                            <constraint firstItem="qTr-qE-Me8" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.25" id="5lM-G2-oNZ"/>
                             <constraint firstItem="ded-Cz-nWJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="73N-bF-fD0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hfI-oM-gAG" secondAttribute="trailing" id="9dw-Ea-Qgs"/>
                             <constraint firstItem="hfI-oM-gAG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DEf-wQ-vJO"/>
