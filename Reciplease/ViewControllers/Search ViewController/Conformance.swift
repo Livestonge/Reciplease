@@ -23,13 +23,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Ingredient cell")!
     var content = cell.defaultContentConfiguration()
-//    Sets a custom font.
+    //    Sets a custom font.
     let ingredient = ingredients[indexPath.row]
     let markerFelt = UIFont(name: "Marker felt", size: 20)
     let accessibleFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: markerFelt!)
     let attributedText = NSAttributedString(string: "- \(ingredient.capitalized)",
-                                        attributes: [.foregroundColor: UIColor.white,
-                                                     .font: accessibleFont])
+                                            attributes: [.foregroundColor: UIColor.white,
+                                                         .font: accessibleFont])
     
     content.textProperties.adjustsFontForContentSizeCategory = true
     content.attributedText = attributedText
@@ -41,18 +41,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension ViewController: RecipesReceiverDelegate{
-// This function gets called when the recipeProvider objects receives new recipes.
+  // This function gets called when the recipeProvider objects receives new recipes.
   func didGetRecipes(_ recipes: [Recipe]) {
-//    starts preparing Ingredients controller.
+    //    starts preparing Ingredients controller.
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "IngredientsListTableViewController") as? IngredientsListTableViewController
     else {fatalError("Failed to load IngredientsListVC")}
-//    updates on the main thread.
+    //    updates on the main thread.
     DispatchQueue.main.async {
-        vc.recipes = recipes
-        self.isLoading = false
+      vc.recipes = recipes
+      self.isLoading = false
       self.indicator.stopAnimating()
-        self.navigationController?.pushViewController(vc, animated: true)
-      }
+      self.navigationController?.pushViewController(vc, animated: true)
+    }
   }
   
 }
