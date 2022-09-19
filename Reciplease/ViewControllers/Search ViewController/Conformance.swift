@@ -46,13 +46,10 @@ extension ViewController: RecipesReceiverDelegate{
     //    starts preparing Ingredients controller.
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "IngredientsListTableViewController") as? IngredientsListTableViewController
     else {fatalError("Failed to load IngredientsListVC")}
-    //    updates on the main thread.
-    DispatchQueue.main.async {
       vc.recipes = recipes
       self.isLoading = false
       self.indicator.stopAnimating()
       self.navigationController?.pushViewController(vc, animated: true)
-    }
   }
   
 }

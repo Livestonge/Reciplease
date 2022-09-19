@@ -9,7 +9,7 @@ import Foundation
 
 protocol RecipesProvider {
   var delegate: RecipesReceiverDelegate? { get set }
-  func getRecipesFor(ingredients: [String])
+  func getRecipesFor(ingredients: [String]) async 
 }
 
 protocol RecipesReceiverDelegate{
@@ -19,16 +19,15 @@ protocol RecipesReceiverDelegate{
 // Objects implementing the RecipesProvider
 class RecipesProviding: RecipesProvider {
 //  The REST service providing the recipes .
-//  private let service = EdamamRestAPIService()
+  private let service = EdamamRestAPIService()
   var delegate: RecipesReceiverDelegate?
   
-  func getRecipesFor(ingredients: [String]){
-//    service.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
-//      self?.delegate?.didGetRecipes(recipes)
-//    }
-      let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
-      self.delegate?.didGetRecipes(recipes?.recipes ?? [])
-    
+  func getRecipesFor(ingredients: [String]) async {
+    await service.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
+      await MainActor.run{ [weak self] in
+        self?.delegate?.didGetRecipes(recipes)
+      }
+    }
 
   }
   

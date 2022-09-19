@@ -31,20 +31,31 @@ class EdamamRestAPIService{
                                           "app_key": apiKey]
   
   
-  func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) -> Void) {
+  func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) async -> Void) async {
     
-    let (url, params) = getSourceInfo(forIngredients: ingredients)
+    let (_, params) = getSourceInfo(forIngredients: ingredients)
     
-    session.request(url, parameters: params)
-           .validate()
-           .response(queue: .main){ responseData in
-             if let data = responseData.data {
-               let recipes = try? JSONDecoder().decode(Recipes.self, from: data)
-                 completion(recipes?.recipes ?? [])
-                  return
-             }
-             completion([])
-           }
+    var component = URLComponents()
+    component.scheme = "https"
+    component.host = "api.edamam.com"
+    component.path = "/api/recipes/v2"
+    component.queryItems = params.map{ URLQueryItem(name: $0.key,
+                                                    value: $0.value)       }
+    let recipes = await getRecipesFrom(url: component.url!)
+    await completion(recipes)
+  }
+  
+  func getRecipesFrom(url: URL) async -> [Recipe] {
+    
+    do{
+      let (data, response) = try await URLSession.shared.data(from: url)
+      guard let response = response as? HTTPURLResponse,
+            (200...299).contains(response.statusCode) else { throw URLError(.badURL) }
+      let recipes = try JSONDecoder().decode(Recipes.self, from: data)
+      return recipes.recipes
+    }catch{
+      return []
+    }
   }
   
   func getSourceInfo(forIngredients ingredients: [String]) -> (URL, [String: String]){

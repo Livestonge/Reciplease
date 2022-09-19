@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 //  Variable to track if a recipe fetch is in progress
   var isLoading = false
   var indicator: UIActivityIndicatorView!
+  var getRecipesTask: Task<(), Never>?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,6 +55,12 @@ class ViewController: UIViewController {
 
     navigationItem.title = "Reciplease"
     
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    getRecipesTask?.cancel()
+    getRecipesTask = nil
   }
   
   @objc
@@ -90,7 +97,14 @@ class ViewController: UIViewController {
     guard isLoading == false else { return }
     isLoading = true
     indicator.startAnimating()
-    recipesProvider.getRecipesFor(ingredients: ingredients)
+    
+    if getRecipesTask != nil{
+      getRecipesTask?.cancel()
+      getRecipesTask = nil
+    }
+    getRecipesTask = Task {
+      await recipesProvider.getRecipesFor(ingredients: ingredients)
+    }
   }
   
   func applyAccessiblity(){
