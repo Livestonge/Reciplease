@@ -14,7 +14,7 @@ class IngredientDetailCell: UITableViewCell {
   private var ingredientsMetricsView: IngredientMetricsView!
   
   @IBOutlet weak var backgroundViewForStack: UIView!
-  private var imageRequest: Cancellable?
+  private var imageDownloadingTask: Task<(), Never>?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -24,7 +24,8 @@ class IngredientDetailCell: UITableViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     self.imageViewRecipe.image = nil
-    self.imageRequest?.cancel()
+    self.imageDownloadingTask?.cancel()
+    self.imageDownloadingTask = nil
   }
   
   private func addGradientBackground(){
@@ -89,10 +90,13 @@ class IngredientDetailCell: UITableViewCell {
   private func downloadImageWith(urlPath: String){
     
     guard let sourceUrl = URL(string: urlPath) else { return }
-
-    self.imageRequest = ImageLoaderService.downloadImageFrom(url: sourceUrl){ [weak self] uiImage in
-      DispatchQueue.main.async {
-        self?.imageViewRecipe.image = uiImage
+    
+    imageDownloadingTask = Task {
+      do{
+        let image = try await ImageLoaderService().downloadImageFrom(url: sourceUrl)
+        self.imageViewRecipe.image = image
+      }catch{
+        print(error.localizedDescription)
       }
     }
   }

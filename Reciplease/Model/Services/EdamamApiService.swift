@@ -51,6 +51,7 @@ class EdamamRestAPIService{
       let (data, response) = try await URLSession.shared.data(from: url)
       guard let response = response as? HTTPURLResponse,
             (200...299).contains(response.statusCode) else { throw URLError(.badURL) }
+      try Task.checkCancellation()
       let recipes = try JSONDecoder().decode(Recipes.self, from: data)
       return recipes.recipes
     }catch{

@@ -39,4 +39,18 @@ class ImageLoaderService{
     task.resume()
     return task
   }
+  
+  func downloadImageFrom(url: URL) async throws -> UIImage {
+    let task = Task{ () throws -> UIImage in
+      try Task.checkCancellation()
+      let (data, response) = try await URLSession.shared.data(from: url)
+      guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else
+      { throw URLError(.badURL) }
+      try Task.checkCancellation()
+      guard let image = UIImage(data: data) else { throw URLError(.cannotDecodeRawData) }
+      return image
+    }
+    return try await task.value
+  }
+    
 }
