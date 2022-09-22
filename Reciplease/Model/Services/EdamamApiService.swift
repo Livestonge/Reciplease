@@ -31,32 +31,49 @@ class EdamamRestAPIService{
                                           "app_key": apiKey]
   
   
-  func getRecipesFor(ingredients: [String], completion: @escaping ([Recipe]) async -> Void) async {
+  func getRecipesFor(ingredients: [String], completion: @escaping (Result<[Recipe], RecipeReleatedError>) -> Void)  {
     
-    let (_, params) = getSourceInfo(forIngredients: ingredients)
+    let (url, params) = getSourceInfo(forIngredients: ingredients)
     
-    var component = URLComponents()
-    component.scheme = "https"
-    component.host = "api.edamam.com"
-    component.path = "/api/recipes/v2"
-    component.queryItems = params.map{ URLQueryItem(name: $0.key,
-                                                    value: $0.value)       }
-    let recipes = await getRecipesFrom(url: component.url!)
-    await completion(recipes)
+    session.request(url, parameters: params)
+            .validate()
+            .response(queue: .main){ responseData in
+              guard let data = responseData.data else { completion(.failure(.badServerResponse)); return}
+              do{
+                let recipes = try JSONDecoder().decode(Recipes.self, from: data).recipes
+                if recipes.isEmpty == false {
+                  completion(.success(recipes))
+                }else{
+                  completion(.failure(.emptyResponse))
+                }
+              }catch {
+                completion(.failure(.unableTodecode))
+              }
+            }
   }
   
-  func getRecipesFrom(url: URL) async -> [Recipe] {
-    
-    do{
-      let (data, response) = try await URLSession.shared.data(from: url)
-      guard let response = response as? HTTPURLResponse,
-            (200...299).contains(response.statusCode) else { throw URLError(.badURL) }
-      try Task.checkCancellation()
-      let recipes = try JSONDecoder().decode(Recipes.self, from: data)
-      return recipes.recipes
-    }catch{
-      return []
+  func getRecipesFor(ingredients: [String] ) async throws -> [Recipe] {
+    return try await withCheckedThrowingContinuation{ continuation in
+      getRecipesFor(ingredients: ingredients){ recipesResult in
+        switch recipesResult{
+        case .success(let recipes):
+          continuation.resume(returning: recipes)
+        case .failure(let recipesRelatedError):
+          continuation.resume(throwing: recipesRelatedError)
+        }
+      }
     }
+    
+//    do{
+//      let (data, response) = try await URLSession.shared.data(from: url)
+//      guard let response = response as? HTTPURLResponse,
+//            (200...299).contains(response.statusCode) else { throw URLError(.badURL) }
+//      try Task.checkCancellation()
+//      let recipes = try JSONDecoder().decode(Recipes.self, from: data)
+//      return recipes.recipes
+//    }catch{
+//      return []
+//    }
   }
   
   func getSourceInfo(forIngredients ingredients: [String]) -> (URL, [String: String]){
@@ -65,3 +82,7 @@ class EdamamRestAPIService{
   }
 }
 
+
+enum  RecipeReleatedError: String, Error {
+  case  badServerResponse, emptyResponse, unableTodecode
+}
