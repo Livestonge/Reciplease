@@ -14,7 +14,9 @@ class StoredRecipe: NSManagedObject {
   func mapToRecipe() -> Recipe{
     Recipe(title: title ?? "",
            urlImage: urlImage ?? "",
-           ingredients: ingredients?.allObjects.compactMap{ ($0 as? StoredIngredient)?.mapToIngredient() } ?? [],
+           ingredients: ingredients!.allObjects
+                                    .compactMap{ ($0 as? StoredIngredient)}
+                                    .map{ $0.mapToIngredient() },
            sourcePath: sourcePath ?? "",
            metrics: metric?.mapToMetrics() ?? Metrics(numberOfLikes: "",
                                                       remainingTime: ""),
