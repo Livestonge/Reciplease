@@ -103,8 +103,30 @@ class ViewController: UIViewController {
       getRecipesTask = nil
     }
     getRecipesTask = Task {
-      await recipesProvider.getRecipesFor(ingredients: ingredients)
+      do{
+        try await recipesProvider.getRecipesFor(ingredients: ingredients)
+      } catch {
+        isLoading = false
+        indicator.stopAnimating()
+        displayAlertWith(error)
+      }
     }
+  }
+  
+  func displayAlertWith(_ error: Error){
+    let alert = UIAlertController()
+    let message: String?
+    switch error{
+    case let recipeError as RecipeReleatedError:
+      message = recipeError.rawValue
+    default:
+      message = error.localizedDescription
+    }
+    alert.message = message
+    let okAction = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(okAction)
+    
+    present(alert, animated: true)
   }
   
   func applyAccessiblity(){
