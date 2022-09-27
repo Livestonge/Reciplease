@@ -39,8 +39,8 @@ class EdamamRestAPIService{
            .validate()
            .response(queue: .main){ responseData in
              if let data = responseData.data {
-               let recipes = try? JSONDecoder().decode(Recipes.self, from: data)
-                 completion(recipes?.recipes ?? [])
+                let recipes = try? JSONDecoder().decode(ServerResponse.self, from: data).recipes
+                 completion(recipes ?? [])
                   return
              }
              completion([])

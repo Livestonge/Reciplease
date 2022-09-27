@@ -7,54 +7,44 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipe: Decodable {
   
   let title: String
   let urlImage: String
   let ingredients: [Ingredient]
   let sourcePath: String
-  let metrics: Metrics
+  private var remainingTime: Int
+  private var numberOfLikes: Int
   var isUserFavorite: Bool = false
-}
-
-extension Recipe: Codable {
   
-  enum MainRecipeCodingKeys: String, CodingKey{
-    case recipe
+  var metrics: Metrics {
+    get{
+      return Metrics(numberOfLikes: "\(numberOfLikes)",
+                     remainingTime: "\(remainingTime)")
+    }
+    set{
+      self.remainingTime = Int(newValue.remainingTime) ?? remainingTime
+      self.numberOfLikes = Int(newValue.numberOfLikes) ?? numberOfLikes
+    }
   }
   
-  enum NestedRecipeCodingKeys: String,CodingKey{
-    case image
-    case label
-    case url
-    case yield
+  init(title: String, urlImage: String, ingredients: [Ingredient], sourcePath: String, metrics: Metrics, isUserFavorite: Bool){
+    self.title = title
+    self.urlImage = urlImage
+    self.ingredients = ingredients
+    self.sourcePath = sourcePath
+    self.remainingTime = Int(metrics.remainingTime) ?? 0
+    self.numberOfLikes = Int(metrics.numberOfLikes) ?? 0
+    self.isUserFavorite = isUserFavorite
+  }
+  
+  enum CodingKeys: String,CodingKey{
+    case urlImage = "image"
+    case title = "label"
+    case sourcePath = "url"
+    case numberOfLikes = "yield"
     case ingredients
-    case totalTime
-  }
-  
-  init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: MainRecipeCodingKeys.self)
-    
-    let nestedContainer = try container.nestedContainer(keyedBy: NestedRecipeCodingKeys.self, forKey: .recipe)
-    
-    title = try nestedContainer.decode(String.self, forKey: .label)
-    
-    urlImage = try nestedContainer.decode(String.self, forKey: .image)
-    
-    sourcePath = try nestedContainer.decode(String.self, forKey: .url)
-    
-    let remainingTime = try nestedContainer.decode(Int.self, forKey: .totalTime)
-    
-    let numberOfLikes = try nestedContainer.decode(Int.self, forKey: .yield)
-    metrics = Metrics(numberOfLikes: numberOfLikes.description,
-                      remainingTime: remainingTime.description)
-    
-    ingredients = try nestedContainer.decode([Ingredient].self, forKey: .ingredients)
-    
-  }
-  
-  func encode(to encoder: Encoder) throws {
-//    To do.....
+    case remainingTime = "totalTime"
   }
 }
 
@@ -63,36 +53,30 @@ struct Metrics{
   let remainingTime: String
 }
 
-struct Ingredient {
+struct Ingredient: Decodable {
   
   let food: String
   let descriptions : String
-}
-
-extension Ingredient: Codable{
   
-  enum IngredientsCodingKeys: String, CodingKey{
+  enum CodingKeys: String, CodingKey{
     case food
-    case description = "text"
+    case descriptions = "text"
   }
   
-  init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: IngredientsCodingKeys.self)
-    food = try container.decode(String.self, forKey: .food)
-    descriptions = try container.decode(String.self, forKey: .description)
-  }
 }
 
-struct Recipes: Decodable{
+struct ServerResponse: Decodable {
+  private let result : [Response]
   
-  let recipes: [Recipe]
-  
-  enum MainCodinkeys: CodingKey{
-    case hits
+  var recipes: [Recipe]{
+    return result.map(\.recipe)
   }
   
-  init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: MainCodinkeys.self)
-    self.recipes = try container.decode([Recipe].self, forKey: .hits)
+  enum CodingKeys: String, CodingKey {
+    case result = "hits"
+  }
+  
+  struct Response: Decodable {
+    let recipe: Recipe
   }
 }

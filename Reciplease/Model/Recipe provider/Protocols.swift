@@ -26,8 +26,8 @@ class RecipesProviding: RecipesProvider {
 //    service.getRecipesFor(ingredients: ingredients){ [weak self] recipes in
 //      self?.delegate?.didGetRecipes(recipes)
 //    }
-      let recipes = try? JSONDecoder().decode(Recipes.self, from: jsonData!)
-      self.delegate?.didGetRecipes(recipes?.recipes ?? [])
+      let recipes = try? JSONDecoder().decode(ServerResponse.self, from: jsonData!).recipes
+      self.delegate?.didGetRecipes(recipes ?? [])
     
 
   }
